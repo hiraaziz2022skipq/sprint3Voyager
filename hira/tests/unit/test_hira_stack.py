@@ -19,3 +19,10 @@ def test_s3bucket():
     template = assertions.Template.from_stack(stack)
 
     template.resource_count_is("AWS::S3::Bucket", 1)
+    
+def test_Lambda():
+    app = core.App()
+    stack = HiraStack(app, "hira")
+    template = assertions.Template.from_stack(stack)
+
+    template.resource_count_is("AWS::Lambda::Function", 1)
