@@ -440,7 +440,7 @@
                                   "ProjectName": {
                                     "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
                                   },
-                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"134faef9ad29dda471377f18e1f13bd21876cf6ff1b37e51408404e2f5ece1a8\"}]"
+                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"0bc1fce7ae800769ae772d8d78b1284471ea72dfefb83fa7f3638bb17d48ee11\"}]"
                                 },
                                 "runOrder": 1,
                                 "roleArn": {
@@ -1071,7 +1071,7 @@
                                     },
                                     "source": {
                                       "type": "CODEPIPELINE",
-                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"build\": {\n      \"commands\": [\n        \"cd hira/\",\n        \"pip install -r requirements.txt\",\n        \"npm install -g aws-cdk\",\n        \"cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
+                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"build\": {\n      \"commands\": [\n        \"cd hira/\",\n        \"pip install -r requirements.txt\",\n        \"npm install -g aws-cdk\",\n        \"cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"/hira/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
                                     },
                                     "cache": {
                                       "type": "NO_CACHE"
