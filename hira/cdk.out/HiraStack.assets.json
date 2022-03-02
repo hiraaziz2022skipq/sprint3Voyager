@@ -1,0 +1,19 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "e7fe599d6b726e6f07b33080ffb109578a9f5eaaa500ae8220d1995f2ac11d65": {
+      "source": {
+        "path": "HiraStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "e7fe599d6b726e6f07b33080ffb109578a9f5eaaa500ae8220d1995f2ac11d65.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
