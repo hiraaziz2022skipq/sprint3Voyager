@@ -1,7 +1,7 @@
 {
   "version": "16.0.0",
   "files": {
-    "470b0e6df2328a664ac99d9cf5c63b8808397cead18fc530e0eaa0441e499a93": {
+    "988e4688425788344758a57384962448b1aa2603654eee1c2898adab052b51ad": {
       "source": {
         "path": "HiraPipelineStack.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "470b0e6df2328a664ac99d9cf5c63b8808397cead18fc530e0eaa0441e499a93.json",
+          "objectKey": "988e4688425788344758a57384962448b1aa2603654eee1c2898adab052b51ad.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

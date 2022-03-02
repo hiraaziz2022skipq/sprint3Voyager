@@ -36,7 +36,7 @@ class HirapipelineStack(Stack):
         prod = HirastageStack(self, "prod")
         
         # Adding Test
-        unit_test=pipelines.ShellStep("unit_test", commands=["cd hira/","pip install -r requirements-dev.txt","pytest"])
+        unit_test=pipelines.ShellStep("unit_test", commands=["cd hira/","pip install -r requirements.txt","pip install -r requirements-dev.txt","pytest"])
         
         # Adding to the pipeline
         pipeline.add_stage(beta, pre=[unit_test])
