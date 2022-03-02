@@ -5,9 +5,9 @@ import aws_cdk as cdk
 
 from hira.hira_stack import HiraStack
 
-
+from hira.hirapipeline_stack import HirapipelineStack
 app = cdk.App()
-HiraStack(app, "HiraStack",
+HirapipelineStack(app, "HiraPipelineStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

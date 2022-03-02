@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e7fe599d6b726e6f07b33080ffb109578a9f5eaaa500ae8220d1995f2ac11d65.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/bc60697167cd92ed0865293ea371c234fb9fe91bdc33c18cdf0d159986cbdc71.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,6 +39,168 @@
         "HiraStack.assets"
       ],
       "metadata": {
+        "/HiraStack/hiraazizbuckets/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizbuckets9D22717D"
+          }
+        ],
+        "/HiraStack/hiraazizbuckets/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizbucketsPolicyEE5EE7B1"
+          }
+        ],
+        "/HiraStack/DeployWebsite/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteAwsCliLayer17DBC421"
+          }
+        ],
+        "/HiraStack/DeployWebsite/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteCustomResourceD116527B"
+          }
+        ],
+        "/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
+        "/HiraStack/Rolelambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Rolelambda391BFB77"
+          }
+        ],
+        "/HiraStack/hiraazizlambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizlambda5E90E1FE"
+          }
+        ],
+        "/HiraStack/rule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleF2C1DCDC"
+          }
+        ],
+        "/HiraStack/rule/AllowEventRuleHiraStackhiraazizlambdaB8907758": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleAllowEventRuleHiraStackhiraazizlambdaB8907758D55F4F5A"
+          }
+        ],
+        "/HiraStack/myTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myTopicDE69997A"
+          }
+        ],
+        "/HiraStack/myTopic/hira.aziz.skipq@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myTopichiraazizskipqgmailcom33B541EF"
+          }
+        ],
+        "/HiraStack/hira_latency_metricswww.skipq.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwskipqcomC29FCD70"
+          }
+        ],
+        "/HiraStack/hira_availability_metricwww.skipq.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwskipqcom1E145700"
+          }
+        ],
+        "/HiraStack/hira_latency_metricswww.google.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwgooglecomAC4C033A"
+          }
+        ],
+        "/HiraStack/hira_availability_metricwww.google.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwgooglecomF2999403"
+          }
+        ],
+        "/HiraStack/hira_latency_metricswww.facebook.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwfacebookcomE902E73B"
+          }
+        ],
+        "/HiraStack/hira_availability_metricwww.facebook.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwfacebookcom8BD1488F"
+          }
+        ],
+        "/HiraStack/hira_latency_metricswww.youtube.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwyoutubecomD7741BEB"
+          }
+        ],
+        "/HiraStack/hira_availability_metricwww.youtube.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwyoutubecom02C6A1C4"
+          }
+        ],
+        "/HiraStack/Hira_aziz_Tabless/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HiraazizTablessE41F42DE"
+          }
+        ],
+        "/HiraStack/Roledynamo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RoledynamoDBE03227"
+          }
+        ],
+        "/HiraStack/Roledynamo/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RoledynamoDefaultPolicy27BDF1E3"
+          }
+        ],
+        "/HiraStack/hira_lambdadynamo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamoE6D4DFA5"
+          }
+        ],
+        "/HiraStack/hira_lambdadynamo/AllowInvoke:HiraStackmyTopicD2E70897": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamoAllowInvokeHiraStackmyTopicD2E7089769B0693B"
+          }
+        ],
+        "/HiraStack/hira_lambdadynamo/myTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamomyTopicF4357998"
+          }
+        ],
         "/HiraStack/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",

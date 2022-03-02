@@ -1,9 +1,887 @@
 {
   "Resources": {
+    "hiraazizbuckets9D22717D": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "aws-cdk:cr-owned:dc3ffcce",
+            "Value": "true"
+          }
+        ]
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hiraazizbuckets/Resource"
+      }
+    },
+    "hiraazizbucketsPolicyEE5EE7B1": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "hiraazizbuckets9D22717D"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "*"
+              },
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "hiraazizbuckets9D22717D",
+                        "Arn"
+                      ]
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hiraazizbuckets/Policy/Resource"
+      }
+    },
+    "DeployWebsiteAwsCliLayer17DBC421": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "Content": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "391a62714930dde9689f73f04bec0cd78494b9d9b7167446e54c6c939bbbb6b4.zip"
+        },
+        "Description": "/opt/awscli/aws"
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/DeployWebsite/AwsCliLayer/Resource",
+        "aws:asset:path": "asset.391a62714930dde9689f73f04bec0cd78494b9d9b7167446e54c6c939bbbb6b4.zip",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Content"
+      }
+    },
+    "DeployWebsiteCustomResourceD116527B": {
+      "Type": "Custom::CDKBucketDeployment",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "Arn"
+          ]
+        },
+        "SourceBucketNames": [
+          {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          }
+        ],
+        "SourceObjectKeys": [
+          "c24165a18e5f46d3a089fbe4a79faa0fa346792c28f8859d7275fda7ad98eb81.zip"
+        ],
+        "DestinationBucketName": {
+          "Ref": "hiraazizbuckets9D22717D"
+        },
+        "Prune": true
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/DeployWebsite/CustomResource/Default"
+      }
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
+      }
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "hiraazizbuckets9D22717D",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "hiraazizbuckets9D22717D",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "Roles": [
+          {
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "f98b78092dcdd31f5e6d47489beb5f804d4835ef86a8085d0a2053cb9ae711da.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Arn"
+          ]
+        },
+        "Handler": "index.handler",
+        "Layers": [
+          {
+            "Ref": "DeployWebsiteAwsCliLayer17DBC421"
+          }
+        ],
+        "Runtime": "python3.7",
+        "Timeout": 900
+      },
+      "DependsOn": [
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+        "aws:asset:path": "asset.f98b78092dcdd31f5e6d47489beb5f804d4835ef86a8085d0a2053cb9ae711da",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "Rolelambda391BFB77": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/CloudWatchFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AWSLambdaInvocation-DynamoDB"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Rolelambda/Resource"
+      }
+    },
+    "hiraazizlambda5E90E1FE": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "c24165a18e5f46d3a089fbe4a79faa0fa346792c28f8859d7275fda7ad98eb81.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "Rolelambda391BFB77",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "bucket_name": {
+              "Ref": "hiraazizbuckets9D22717D"
+            }
+          }
+        },
+        "Handler": "webHealthLambda.lambda_handler",
+        "Runtime": "python3.7",
+        "Timeout": 180
+      },
+      "DependsOn": [
+        "Rolelambda391BFB77"
+      ],
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hiraazizlambda/Resource",
+        "aws:asset:path": "asset.c24165a18e5f46d3a089fbe4a79faa0fa346792c28f8859d7275fda7ad98eb81",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "ruleF2C1DCDC": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "ScheduleExpression": "cron(* * * * ? *)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "hiraazizlambda5E90E1FE",
+                "Arn"
+              ]
+            },
+            "Id": "Target0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/rule/Resource"
+      }
+    },
+    "ruleAllowEventRuleHiraStackhiraazizlambdaB8907758D55F4F5A": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "hiraazizlambda5E90E1FE",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "ruleF2C1DCDC",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/rule/AllowEventRuleHiraStackhiraazizlambdaB8907758"
+      }
+    },
+    "myTopicDE69997A": {
+      "Type": "AWS::SNS::Topic",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/myTopic/Resource"
+      }
+    },
+    "myTopichiraazizskipqgmailcom33B541EF": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Protocol": "email",
+        "TopicArn": {
+          "Ref": "myTopicDE69997A"
+        },
+        "Endpoint": "hira.aziz.skipq@gmail.com"
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/myTopic/hira.aziz.skipq@gmail.com/Resource"
+      }
+    },
+    "hiralatencymetricswwwskipqcomC29FCD70": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.skipq.com"
+          }
+        ],
+        "MetricName": "url_latency",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 0.6
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_latency_metricswww.skipq.com/Resource"
+      }
+    },
+    "hiraavailabilitymetricwwwskipqcom1E145700": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.skipq.com"
+          }
+        ],
+        "MetricName": "url_available",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 1
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_availability_metricwww.skipq.com/Resource"
+      }
+    },
+    "hiralatencymetricswwwgooglecomAC4C033A": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.google.com"
+          }
+        ],
+        "MetricName": "url_latency",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 0.6
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_latency_metricswww.google.com/Resource"
+      }
+    },
+    "hiraavailabilitymetricwwwgooglecomF2999403": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.google.com"
+          }
+        ],
+        "MetricName": "url_available",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 1
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_availability_metricwww.google.com/Resource"
+      }
+    },
+    "hiralatencymetricswwwfacebookcomE902E73B": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.facebook.com"
+          }
+        ],
+        "MetricName": "url_latency",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 0.6
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_latency_metricswww.facebook.com/Resource"
+      }
+    },
+    "hiraavailabilitymetricwwwfacebookcom8BD1488F": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.facebook.com"
+          }
+        ],
+        "MetricName": "url_available",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 1
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_availability_metricwww.facebook.com/Resource"
+      }
+    },
+    "hiralatencymetricswwwyoutubecomD7741BEB": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.youtube.com"
+          }
+        ],
+        "MetricName": "url_latency",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 0.6
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_latency_metricswww.youtube.com/Resource"
+      }
+    },
+    "hiraavailabilitymetricwwwyoutubecom02C6A1C4": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "AlarmActions": [
+          {
+            "Ref": "myTopicDE69997A"
+          }
+        ],
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "URL",
+            "Value": "www.youtube.com"
+          }
+        ],
+        "MetricName": "url_available",
+        "Namespace": "Hira_Aziz_Metrics",
+        "Period": 60,
+        "Statistic": "Average",
+        "Threshold": 1
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_availability_metricwww.youtube.com/Resource"
+      }
+    },
+    "HiraazizTablessE41F42DE": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "Hiraaziz_URLs_DB",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "timestamp",
+            "KeyType": "RANGE"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "Hiraaziz_URLs_DB",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "timestamp",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Hira_aziz_Tabless/Resource"
+      }
+    },
+    "RoledynamoDBE03227": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/CloudWatchFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AWSLambdaInvocation-DynamoDB"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Roledynamo/Resource"
+      }
+    },
+    "RoledynamoDefaultPolicy27BDF1E3": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "HiraazizTablessE41F42DE",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "RoledynamoDefaultPolicy27BDF1E3",
+        "Roles": [
+          {
+            "Ref": "RoledynamoDBE03227"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/Roledynamo/DefaultPolicy/Resource"
+      }
+    },
+    "hiralambdadynamoE6D4DFA5": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "c24165a18e5f46d3a089fbe4a79faa0fa346792c28f8859d7275fda7ad98eb81.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "RoledynamoDBE03227",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "table_name": {
+              "Ref": "HiraazizTablessE41F42DE"
+            }
+          }
+        },
+        "Handler": "dynamo.lambda_handler",
+        "Runtime": "python3.7",
+        "Timeout": 180
+      },
+      "DependsOn": [
+        "RoledynamoDefaultPolicy27BDF1E3",
+        "RoledynamoDBE03227"
+      ],
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_lambdadynamo/Resource",
+        "aws:asset:path": "asset.c24165a18e5f46d3a089fbe4a79faa0fa346792c28f8859d7275fda7ad98eb81",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "hiralambdadynamoAllowInvokeHiraStackmyTopicD2E7089769B0693B": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "hiralambdadynamoE6D4DFA5",
+            "Arn"
+          ]
+        },
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "myTopicDE69997A"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_lambdadynamo/AllowInvoke:HiraStackmyTopicD2E70897"
+      }
+    },
+    "hiralambdadynamomyTopicF4357998": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "myTopicDE69997A"
+        },
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "hiralambdadynamoE6D4DFA5",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraStack/hira_lambdadynamo/myTopic/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzTVM1BMLC/WTU7J1s3JTNKrDi5JTM7WcU7LC0otzi8tSk4FsZ3z81IySzLz82p1AipLMvLz9I31DA30jBSzijMzdYtK80oyc1P1giA0AFVQCO1WAAAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/01Ry27DIBD8ltwJzUP9gMRVTz1EcdSrhYEmW/OwWGhkIf69YPI6zeywsLPDhq7f6WrBrrjkYlgq6GlsPeMDyVIXcUvjPvBBetL8mBurcLAK+PSUb3Ut9gxlIrjtopCjspOWxtN69PEQCEOUHumuQCKK6V4wGvOLX2yS7ls6BGtIC+aspLfmMxjui/IgufWVH6TTgOVSIsA0jUerZDmY8Wm4skTkX3aBuS3c2jJm1yZLJzsCL1olbeiROxjvk17rRLiyQVyZ5xcad4o5XVpmkoiYDNNW5FhPrK9jZpLuC3eqLNvluLkCurtio2Den8y55M845wBIE9BbfZRog+PV7Z2/io01Aqqrw+Qv1rxt6XpFN4tfBFi6YDxoSY8V/wFyfJG4/QEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "HiraStack/CDKMetadata/Default"
