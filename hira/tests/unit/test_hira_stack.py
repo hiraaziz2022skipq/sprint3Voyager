@@ -1,9 +1,7 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
-from aws_cdk.assertions import Template
 
-from sprint3Voyager.hira.hira.hira_stack import HiraStack
-
+from hira.hira_stack import HiraStack
 # example tests. To run these tests, uncomment this file along with the example
 # resource in hira/hira_stack.py
 # def test_sqs_queue_created():
