@@ -7,7 +7,7 @@ from aws_cdk import (
 )
 import aws_cdk as cdk
 from constructs import Construct
-from hirastage_stack import HirastageStack
+from .hirastage_stack import HirastageStack
 
 class HirapipelineStack(Stack):
 

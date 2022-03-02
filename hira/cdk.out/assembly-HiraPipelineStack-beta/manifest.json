@@ -1,0 +1,227 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "HiraPipelineStackbetahiraaziz3stack6902FED9.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "HiraPipelineStackbetahiraaziz3stack6902FED9.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "HiraPipelineStackbetahiraaziz3stack6902FED9": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "HiraPipelineStackbetahiraaziz3stack6902FED9.template.json",
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/139dceb6ce61a188575de2019cec5fa2f53f6a7e93b7545c79adaec03b25bec1.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "HiraPipelineStackbetahiraaziz3stack6902FED9.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "beta-hiraaziz3stack"
+      },
+      "dependencies": [
+        "HiraPipelineStackbetahiraaziz3stack6902FED9.assets"
+      ],
+      "metadata": {
+        "/HiraPipelineStack/beta/hiraaziz3stack/hiraazizbuckets/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizbuckets9D22717D"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hiraazizbuckets/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizbucketsPolicyEE5EE7B1"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/DeployWebsite/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteAwsCliLayer17DBC421"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/DeployWebsite/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteCustomResourceD116527B"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Rolelambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Rolelambda391BFB77"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizlambda5E90E1FE"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/rule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleF2C1DCDC"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/rule/AllowEventRuleHiraPipelineStackbetahiraaziz3stackhiraazizlambda41FAC2C7": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleAllowEventRuleHiraPipelineStackbetahiraaziz3stackhiraazizlambda41FAC2C762E55805"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/myTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myTopicDE69997A"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/myTopic/hira.aziz.skipq@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myTopichiraazizskipqgmailcom33B541EF"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_latency_metricswww.skipq.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwskipqcomC29FCD70"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_availability_metricwww.skipq.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwskipqcom1E145700"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_latency_metricswww.google.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwgooglecomAC4C033A"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_availability_metricwww.google.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwgooglecomF2999403"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_latency_metricswww.facebook.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwfacebookcomE902E73B"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_availability_metricwww.facebook.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwfacebookcom8BD1488F"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_latency_metricswww.youtube.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralatencymetricswwwyoutubecomD7741BEB"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_availability_metricwww.youtube.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraavailabilitymetricwwwyoutubecom02C6A1C4"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Hira_aziz_Tabless/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HiraazizTablessE41F42DE"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Roledynamo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RoledynamoDBE03227"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/Roledynamo/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RoledynamoDefaultPolicy27BDF1E3"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_lambdadynamo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamoE6D4DFA5"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_lambdadynamo/AllowInvoke:HiraPipelineStackbetahiraaziz3stackmyTopicB1EAEF01": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamoAllowInvokeHiraPipelineStackbetahiraaziz3stackmyTopicB1EAEF015C32B737"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/hira_lambdadynamo/myTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiralambdadynamomyTopicF4357998"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/HiraPipelineStack/beta/hiraaziz3stack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "HiraPipelineStack/beta/hiraaziz3stack"
+    }
+  }
+}

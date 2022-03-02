@@ -7,7 +7,7 @@ from aws_cdk import (
 
 )
 import aws_cdk as cdk
-from hira_stack import HiraStack
+from .hira_stack import HiraStack
 
 from constructs import Construct
 
