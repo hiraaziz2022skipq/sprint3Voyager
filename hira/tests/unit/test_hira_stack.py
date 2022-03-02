@@ -25,4 +25,4 @@ def test_Lambda():
     stack = HiraStack(app, "hira")
     template = assertions.Template.from_stack(stack)
 
-    template.resource_count_is("AWS::Lambda::Function", 1)
+    template.resource_count_is("AWS::Lambda::Function", 3)
