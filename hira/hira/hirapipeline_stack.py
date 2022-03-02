@@ -21,7 +21,7 @@ class HirapipelineStack(Stack):
 
         # Giving source and commands
         synth = pipelines.ShellStep("Synth", input=source,
-                                    commands=["cd hira/", "pip install -r requirements.txt",
+                                    commands=["cd hira/", "pip install -r requirements.txt","pip install -r requirements-dev.txt",
                                               "npm install -g aws-cdk", "cdk synth"],
                                     primary_output_directory="hira/cdk.out"
                                     )
