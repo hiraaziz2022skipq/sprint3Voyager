@@ -1,4 +1,4 @@
-import aws_cdk as cdk
+import aws_cdk as core
 import aws_cdk.assertions as assertions
 from aws_cdk.assertions import Template
 
@@ -16,7 +16,7 @@ from sprint3Voyager.hira.hira.hira_stack import HiraStack
 #     })
 
 def test_s3bucket():
-    app = cdk.App()
+    app = core.App()
     stack = HiraStack(app, "hira")
     template = assertions.Template.from_stack(stack)
 
