@@ -905,9 +905,9 @@
         ],
         "MetricName": "Duration",
         "Namespace": "AWS/Lambda",
-        "Period": 300,
+        "Period": 60,
         "Statistic": "Average",
-        "Threshold": 7000
+        "Threshold": 12000
       },
       "Metadata": {
         "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration/Resource"
@@ -1023,7 +1023,7 @@
             "DEPLOYMENT_STOP_ON_ALARM"
           ]
         },
-        "DeploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent10Minutes",
+        "DeploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent5Minutes",
         "DeploymentStyle": {
           "DeploymentOption": "WITH_TRAFFIC_CONTROL",
           "DeploymentType": "BLUE_GREEN"

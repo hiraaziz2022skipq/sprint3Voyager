@@ -4256,9 +4256,9 @@
                             ],
                             "metricName": "Duration",
                             "namespace": "AWS/Lambda",
-                            "period": 300,
+                            "period": 60,
                             "statistic": "Average",
-                            "threshold": 7000
+                            "threshold": 12000
                           }
                         },
                         "constructInfo": {
@@ -4432,7 +4432,7 @@
                                 "DEPLOYMENT_STOP_ON_ALARM"
                               ]
                             },
-                            "deploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent10Minutes",
+                            "deploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent5Minutes",
                             "deploymentStyle": {
                               "deploymentType": "BLUE_GREEN",
                               "deploymentOption": "WITH_TRAFFIC_CONTROL"
@@ -5925,9 +5925,9 @@
                             ],
                             "metricName": "Duration",
                             "namespace": "AWS/Lambda",
-                            "period": 300,
+                            "period": 60,
                             "statistic": "Average",
-                            "threshold": 7000
+                            "threshold": 12000
                           }
                         },
                         "constructInfo": {
@@ -6101,7 +6101,7 @@
                                 "DEPLOYMENT_STOP_ON_ALARM"
                               ]
                             },
-                            "deploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent10Minutes",
+                            "deploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent5Minutes",
                             "deploymentStyle": {
                               "deploymentType": "BLUE_GREEN",
                               "deploymentOption": "WITH_TRAFFIC_CONTROL"

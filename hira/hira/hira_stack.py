@@ -116,7 +116,7 @@ class HiraStack(Stack):
         failure_metrics_duration = cloudwatch.Metric(namespace="AWS/Lambda",
                                                         metric_name="Duration", 
                                                         period=Duration.minutes(1),
-                                                        dimensions_map={"FunctionName":lambdafunc.function_name}
+                                                        dimensions_map={"FunctionName":function_name}
                                                         )
 
         failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
