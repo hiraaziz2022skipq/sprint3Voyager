@@ -119,7 +119,7 @@ class HiraStack(Stack):
                                           )
 
         failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm", metric=failure_metrics_duration,
-                                       threshold="0.3",
+                                       threshold="3000",
                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
                                        )
