@@ -141,7 +141,7 @@ class HiraStack(Stack):
         alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
         deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
-        alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_5MINUTE,
+        alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
         alarms=[failure_alarm_duration] )
         
         
