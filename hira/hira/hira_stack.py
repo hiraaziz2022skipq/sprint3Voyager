@@ -230,7 +230,7 @@ class HiraStack(Stack):
                                                         dimensions_map={"FunctionName":function_name}
                                                         )
 
-        failure_alarm_duration = cloudwatch.Alarm( "failure_alarm_duration", metric=failure_metrics_duration,
+        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
                                         threshold=fail_metric_threshold,
                                         evaluation_periods=1,
                                         comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
