@@ -242,7 +242,7 @@ class HiraStack(Stack):
     # Auto Roll Back
     
     def roll_back(self, failure_metrics_duration,lambdafunc):
-        alias = lambda_.Alias("LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
+        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
-        deployment_group = codedeploy.LambdaDeploymentGroup( deploy_id,
+        deployment_group = codedeploy.LambdaDeploymentGroup(self, deploy_id,
                            alias=alias, alarms=[failure_metrics_duration] )
