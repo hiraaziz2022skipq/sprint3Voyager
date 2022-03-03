@@ -1,3 +1,4 @@
+import imp
 import aws_cdk
 
 from aws_cdk import (
@@ -18,9 +19,9 @@ from aws_cdk import (
     aws_stepfunctions_tasks as tasks,
     aws_codedeploy as codedeploy
 )
-import sys
+from resources import constants as constants
 from constructs import Construct
-url=["www.skipq.com","www.google.com","www.facebook.com","www.youtube.com"]
+# url=["www.skipq.com","www.google.com","www.facebook.com","www.youtube.com"]
 url_monitor_namespace="Hira_Aziz_Metrics"
 
 url_merticname_availbility="url_available"
@@ -40,6 +41,10 @@ avail_id="hira_availability_metric"
 bucket_id="hiraazizbuckets"
 
 table_id="Hira_aziz_Tabless"
+deploy_id="Deploy lambda new version"
+fail_metric_namespace="AWS/Lambda"
+fail_metricname="Duration"
+fail_metric_threshold=12000
 
 class HiraStack(Stack):
 
@@ -78,7 +83,7 @@ class HiraStack(Stack):
         # my_topic.add_subscription(subscriptions.EmailSubscription(email_address.value.toString()))
 
 
-        for urls in url:
+        for urls in constants.url:
             dimension={"URL":urls}
 
             latency_alarm=self.create_alarm_latency(dimension,urls)          # Calling an alrm for latency
@@ -101,6 +106,7 @@ class HiraStack(Stack):
         dynamo_lambda.add_environment('table_name',str(table_name))      # Env var for Dynamo DB
 
         dynamo_lambda.apply_removal_policy(RemovalPolicy.DESTROY)
+        
         # Giving permissions
         table.grant_read_write_data(dynamo_lambda)
 
@@ -113,41 +119,26 @@ class HiraStack(Stack):
         '''Creating Failure Metrics'''
         
         # Duration of Lambda Function Metrics and Alarms
-        failure_metrics_duration = cloudwatch.Metric(namespace="AWS/Lambda",
-                                                        metric_name="Duration", 
-                                                        period=Duration.minutes(1),
-                                                        dimensions_map={"FunctionName":function_name}
-                                                        )
-
-        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
-                                        threshold=12000,
-                                        evaluation_periods=1,
-                                       comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-                                       datapoints_to_alarm=1,
-                                       # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
-                                       )
+        fail_metric=self.failure_metric(function_name)
+        
+        # Auto RollBack when lambda triggered
+        self.roll_back(fail_metric,lambdafunc)
         
         # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",
         #                                   metric_name="Invocations", 
-                                            # period=Duration.minutes(1),
+        #                                     period=Duration.minutes(1),
         #                                   dimensions_map={"FunctionName":lambdafunc.function_name}
         #                                   )
 
         # failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm_invcations", metric=failure_metrics_Invocations,
-        #                                evaluation_periods=1,    threshold=3,
+        #                                evaluation_periods=1,    threshold=20,
         #                                comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
         #                                datapoints_to_alarm=1,
         #                                # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
         #                                )
         
-        alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
-        deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
-        alias=alias, alarms=[failure_metrics_duration] )
-        
-        
-
 
 
 
@@ -230,3 +221,28 @@ class HiraStack(Stack):
                            sort_key=dynamodb.Attribute(name=sort_key, type=dynamodb.AttributeType.STRING)
                            )
         return table
+    
+    # Failure Metrics Alarm
+    
+    def failure_metric(function_name):
+        failure_metrics_duration = cloudwatch.Metric(namespace=fail_metric_namespace,
+                                                        metric_name=fail_metricname, 
+                                                        dimensions_map={"FunctionName":function_name}
+                                                        )
+
+        failure_alarm_duration = cloudwatch.Alarm( "failure_alarm_duration", metric=failure_metrics_duration,
+                                        threshold=fail_metric_threshold,
+                                        evaluation_periods=1,
+                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+                                        datapoints_to_alarm=1,
+                                       # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
+                                       )
+        return failure_alarm_duration
+    
+    # Auto Roll Back
+    
+    def roll_back(failure_metrics_duration,lambdafunc):
+        alias = lambda_.Alias("LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
+        
+        deployment_group = codedeploy.LambdaDeploymentGroup( deploy_id,
+                           alias=alias, alarms=[failure_metrics_duration] )
