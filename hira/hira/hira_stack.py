@@ -224,7 +224,7 @@ class HiraStack(Stack):
     
     # Failure Metrics Alarm
     
-    def failure_metric(function_name):
+    def failure_metric(self,function_name):
         failure_metrics_duration = cloudwatch.Metric(namespace=fail_metric_namespace,
                                                         metric_name=fail_metricname, 
                                                         dimensions_map={"FunctionName":function_name}
@@ -241,7 +241,7 @@ class HiraStack(Stack):
     
     # Auto Roll Back
     
-    def roll_back(failure_metrics_duration,lambdafunc):
+    def roll_back(self, failure_metrics_duration,lambdafunc):
         alias = lambda_.Alias("LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
         deployment_group = codedeploy.LambdaDeploymentGroup( deploy_id,
