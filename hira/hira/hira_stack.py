@@ -15,7 +15,8 @@ from aws_cdk import (
     aws_sns as sns,
     aws_cloudwatch_actions as cw_actions,
     aws_dynamodb as dynamodb,
-    aws_stepfunctions_tasks as tasks
+    aws_stepfunctions_tasks as tasks,
+    aws_codedeploy as codedeploy
 )
 import sys
 from constructs import Construct
@@ -57,6 +58,7 @@ class HiraStack(Stack):
         '''Lambda Function Code'''
         # calling web health lambda function
         lambdafunc = self.create_lambda("hiraazizlambda", "./resources", "webHealthLambda.lambda_handler",self.create_role("lambda"))
+        function_name=lambdafunc.function_name
 
         lambdafunc.add_environment('bucket_name',str(s3Bucket))     #env var for bucktet
         lambdafunc.apply_removal_policy(RemovalPolicy.DESTROY)
@@ -107,6 +109,40 @@ class HiraStack(Stack):
         table.apply_removal_policy(RemovalPolicy.DESTROY)
 
 
+
+        '''Creating Failure Metrics'''
+        
+        # Duration of Lambda Function Metrics and Alarms
+        failure_metrics_duration = cloudwatch.Metric(metric_name="AWS/Lambda",
+                                          namespace="Duration", 
+                                          dimensions_map={"FunctionName",function_name}
+                                          )
+
+        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm", metric=failure_metrics_duration,
+                                       threshold="0.3",
+                                       comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+                                       # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
+                                       )
+        
+        # Invocations of Lambda Function Metrics and Alarms
+        failure_metrics_Invocations = cloudwatch.Metric(metric_name="AWS/Lambda",
+                                          namespace="Invocations", 
+                                          dimensions_map={"FunctionName",function_name}
+                                          )
+
+        failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm", metric=failure_metrics_Invocations,
+                                       threshold="3",
+                                       comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+                                       # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
+                                       )
+        
+        alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
+        
+        deployment_group = codedeploy.LambdaDeploymentGroup(self, "BlueGreenDeployment",
+        alias=alias,deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_10_MINUTES,
+        alarms=[failure_alarm_duration,failure_alarm_Invocations] )
+        
+        
 
     '''Functions'''
     def create_role(self,name):
