@@ -110,41 +110,44 @@ class HiraStack(Stack):
 
 
 
-        # '''Creating Failure Metrics'''
+        '''Creating Failure Metrics'''
         
-        # # Duration of Lambda Function Metrics and Alarms
-        # failure_metrics_duration = cloudwatch.Metric(namespace="AWS/Lambda",
-        #                                                 metric_name="Duration", 
-        #                                                 dimensions_map={"FunctionName":lambdafunc.function_name}
-        #                                                 )
+        # Duration of Lambda Function Metrics and Alarms
+        failure_metrics_duration = cloudwatch.Metric(namespace="AWS/Lambda",
+                                                        metric_name="Duration", 
+                                                        dimensions_map={"FunctionName":lambdafunc.function_name}
+                                                        )
 
-        # failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
-        #                                evaluation_periods=1, threshold=7000,
-        #                                comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-        #                                datapoints_to_alarm=1,
-        #                                # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
-        #                                )
+        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
+                                       evaluation_periods=1, threshold=8000,
+                                       comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+                                       datapoints_to_alarm=1,
+                                       # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
+                                       )
         
-        # # Invocations of Lambda Function Metrics and Alarms
+        # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",
         #                                   metric_name="Invocations", 
         #                                   dimensions_map={"FunctionName":lambdafunc.function_name}
         #                                   )
 
-        # failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm_invcations", metric=failure_metrics_Invocations,
+        # failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm_invocations", metric=failure_metrics_Invocations,
         #                                evaluation_periods=1,    threshold=3,
         #                                comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
         #                                datapoints_to_alarm=1,
         #                                # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
         #                                )
         
-        # alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
+        alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
-        # deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
-        # alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_10_MINUTES,
-        # alarms=[failure_alarm_duration,failure_alarm_Invocations] )
+        deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
+        alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_5MINUTE,
+        alarms=[failure_alarm_duration] )
         
         
+
+
+
 
     '''Functions'''
     def create_role(self,name):
