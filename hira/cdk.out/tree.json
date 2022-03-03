@@ -4258,7 +4258,7 @@
                             "namespace": "AWS/Lambda",
                             "period": 300,
                             "statistic": "Average",
-                            "threshold": 3000
+                            "threshold": 7000
                           }
                         },
                         "constructInfo": {
@@ -5975,7 +5975,7 @@
                             "namespace": "AWS/Lambda",
                             "period": 300,
                             "statistic": "Average",
-                            "threshold": 3000
+                            "threshold": 7000
                           }
                         },
                         "constructInfo": {

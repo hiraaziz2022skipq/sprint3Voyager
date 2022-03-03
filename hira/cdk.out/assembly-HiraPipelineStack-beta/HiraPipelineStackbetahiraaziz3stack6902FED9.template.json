@@ -907,7 +907,7 @@
         "Namespace": "AWS/Lambda",
         "Period": 300,
         "Statistic": "Average",
-        "Threshold": 3000
+        "Threshold": 7000
       },
       "Metadata": {
         "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration/Resource"
