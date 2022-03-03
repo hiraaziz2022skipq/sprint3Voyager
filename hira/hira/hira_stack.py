@@ -118,7 +118,7 @@ class HiraStack(Stack):
                                                         dimensions_map={"FunctionName":lambdafunc.function_name}
                                                         )
 
-        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm", metric=failure_metrics_duration,
+        failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
                                        evaluation_periods=1, threshold=3000,
                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
@@ -130,7 +130,7 @@ class HiraStack(Stack):
                                           dimensions_map={"FunctionName":lambdafunc.function_name}
                                           )
 
-        failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm", metric=failure_metrics_Invocations,
+        failure_alarm_Invocations = cloudwatch.Alarm(self, "failure_alarm_invcations", metric=failure_metrics_Invocations,
                                        evaluation_periods=1,    threshold=3,
                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
@@ -138,7 +138,7 @@ class HiraStack(Stack):
         
         alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
-        deployment_group = codedeploy.LambdaDeploymentGroup(self, "BlueGreenDeployment",
+        deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
         alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_10_MINUTES,
         alarms=[failure_alarm_duration,failure_alarm_Invocations] )
         
