@@ -115,11 +115,13 @@ class HiraStack(Stack):
         # Duration of Lambda Function Metrics and Alarms
         failure_metrics_duration = cloudwatch.Metric(namespace="AWS/Lambda",
                                                         metric_name="Duration", 
+                                                        period=Duration.minutes(1),
                                                         dimensions_map={"FunctionName":lambdafunc.function_name}
                                                         )
 
         failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
-                                       evaluation_periods=1, threshold=7000,
+                                        threshold=12000,
+                                        evaluation_periods=1,
                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                        datapoints_to_alarm=1,
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
@@ -128,6 +130,7 @@ class HiraStack(Stack):
         # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",
         #                                   metric_name="Invocations", 
+                                            # period=Duration.minutes(1),
         #                                   dimensions_map={"FunctionName":lambdafunc.function_name}
         #                                   )
 
@@ -141,8 +144,7 @@ class HiraStack(Stack):
         alias = lambda_.Alias(self, "LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
         deployment_group = codedeploy.LambdaDeploymentGroup(self, "Deploy lambda new version",
-        alias=alias,    deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_10_MINUTES,
-        alarms=[failure_metrics_duration] )
+        alias=alias, alarms=[failure_metrics_duration] )
         
         
 
