@@ -894,6 +894,7 @@
       "Properties": {
         "ComparisonOperator": "GreaterThanOrEqualToThreshold",
         "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
         "Dimensions": [
           {
             "Name": "FunctionName",
@@ -917,6 +918,7 @@
       "Properties": {
         "ComparisonOperator": "GreaterThanOrEqualToThreshold",
         "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
         "Dimensions": [
           {
             "Name": "FunctionName",

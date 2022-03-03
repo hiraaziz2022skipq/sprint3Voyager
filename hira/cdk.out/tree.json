@@ -4245,6 +4245,7 @@
                           "aws:cdk:cloudformation:props": {
                             "comparisonOperator": "GreaterThanOrEqualToThreshold",
                             "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
                             "dimensions": [
                               {
                                 "name": "FunctionName",
@@ -4283,6 +4284,7 @@
                           "aws:cdk:cloudformation:props": {
                             "comparisonOperator": "GreaterThanOrEqualToThreshold",
                             "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
                             "dimensions": [
                               {
                                 "name": "FunctionName",
@@ -5960,6 +5962,7 @@
                           "aws:cdk:cloudformation:props": {
                             "comparisonOperator": "GreaterThanOrEqualToThreshold",
                             "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
                             "dimensions": [
                               {
                                 "name": "FunctionName",
@@ -5998,6 +6001,7 @@
                           "aws:cdk:cloudformation:props": {
                             "comparisonOperator": "GreaterThanOrEqualToThreshold",
                             "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
                             "dimensions": [
                               {
                                 "name": "FunctionName",
