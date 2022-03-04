@@ -54,7 +54,7 @@ class HiraStack(Stack):
 
         '''S3 Bucket Code'''
         # Create a Bucket
-        bucket= s3.Bucket(self, bucket_id , public_read_access=True)
+        bucket= s3.Bucket(self, constants.bucket_id , public_read_access=True)
         s3Bucket=bucket.bucket_name
         # upload file on s3
         self.uploadtos3(bucket)
