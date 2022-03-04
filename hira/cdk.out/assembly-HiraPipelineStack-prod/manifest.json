@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/294878d208d1f66b4ff8840f50f3eaae672b59460e6ff4c3132615414cce717e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/731333fb03da6395bb5d0255843352bd8e15e1da32dfafa39bb451797c94af44.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -86,6 +86,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "hiraazizlambda5E90E1FE"
+          }
+        ],
+        "/HiraPipelineStack/prod/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72"
           }
         ],
         "/HiraPipelineStack/prod/hiraaziz3stack/rule/Resource": [
@@ -194,6 +200,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "hiralambdadynamomyTopicF4357998"
+          }
+        ],
+        "/HiraPipelineStack/prod/hiraaziz3stack/failure_alarm_duration/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "failurealarmduration5EA81852"
           }
         ],
         "/HiraPipelineStack/prod/hiraaziz3stack/CDKMetadata/Default": [

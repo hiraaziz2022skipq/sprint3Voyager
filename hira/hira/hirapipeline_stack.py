@@ -46,8 +46,8 @@ class HirapipelineStack(Stack):
         # Adding to the pipeline
         pipeline.add_stage(beta,pre=[unit_test])
 
-        ordered_steps = pipelines.Step.sequence([pipelines.ManualApprovalStep("A")])
-        pipeline.add_stage(prod, pre=ordered_steps)
+        
+        pipeline.add_stage(prod, pre = [pipelines.ManualApprovalStep("Approve prod stage")])
 
 
     def create_pipeline_role(self):

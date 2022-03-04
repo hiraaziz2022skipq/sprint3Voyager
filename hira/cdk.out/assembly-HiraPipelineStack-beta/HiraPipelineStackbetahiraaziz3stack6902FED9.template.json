@@ -373,6 +373,17 @@
         "aws:asset:property": "Code"
       }
     },
+    "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72": {
+      "Type": "AWS::Lambda::Version",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "hiraazizlambda5E90E1FE"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource"
+      }
+    },
     "ruleF2C1DCDC": {
       "Type": "AWS::Events::Rule",
       "Properties": {
@@ -878,10 +889,34 @@
         "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/hira_lambdadynamo/myTopic/Resource"
       }
     },
+    "failurealarmduration5EA81852": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "FunctionName",
+            "Value": {
+              "Ref": "hiraazizlambda5E90E1FE"
+            }
+          }
+        ],
+        "MetricName": "Duration",
+        "Namespace": "AWS/Lambda",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 12000
+      },
+      "Metadata": {
+        "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/01Ry27DIBD8ltwJzUP9gMRVTz1EcdSrhYEmW/OwWGhkIf69YPI6zeywsLPDhq7f6WrBrrjkYlgq6GlsPeMDyVIXcUvjPvBBetL8mBurcLAK+PSUb3Ut9gxlIrjtopCjspOWxtN69PEQCEOUHumuQCKK6V4wGvOLX2yS7ls6BGtIC+aspLfmMxjui/IgufWVH6TTgOVSIsA0jUerZDmY8Wm4skTkX3aBuS3c2jJm1yZLJzsCL1olbeiROxjvk17rRLiyQVyZ5xcad4o5XVpmkoiYDNNW5FhPrK9jZpLuC3eqLNvluLkCurtio2Den8y55M845wBIE9BbfZRog+PV7Z2/io01Aqqrw+Qv1rxt6XpFN4tfBFi6YDxoSY8V/wFyfJG4/QEAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/01Ry27CMBD8Fu7GBaJ+AKTqqQdEUK+RY7uwxQ/ktYsiy/9eOybAaWZnR/bu7Iau3+lqwW645OKyVDDQ2HnGLyRLfcSGxl3gF+lJ+2PurMLeKuDjU77XtdgxlIlg00chr8qOWhpPa+vjIRCGKD3SbYFEFNODYDTmF7/YKN23dAjWkA7MSUlvzWcw3BflQbL1wWd71l7oXjoNWKpEgGkaD1bJ0pjwuUNlici/PBhmW7jbMuZFTJaO9gq8aJV0YUDu4DoP8lonwpUN4sY8P9O4VczpYplIImI0TFuRkz6yoX4zkTRn0Kuyf58vwBXQ7Q1bBVMkZIoq3+eUMyFtQG/1QaINjtdpZ/4qttYIqFPtR3+25q2h6xXdLH4RYOmC8aAlPVT8B5XT4EgQAgAA"
       },
       "Metadata": {
         "aws:cdk:path": "HiraPipelineStack/beta/hiraaziz3stack/CDKMetadata/Default"

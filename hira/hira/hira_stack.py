@@ -87,6 +87,8 @@ class HiraStack(Stack):
         # Giving permissions
         table.grant_read_write_data(dynamo_lambda)
 
+
+
         # invoke lambda after every alarm
         my_topic.add_subscription(subscriptions.LambdaSubscription(fn=dynamo_lambda))
         table.apply_removal_policy(RemovalPolicy.DESTROY)
@@ -96,12 +98,16 @@ class HiraStack(Stack):
         '''Creating Failure Metrics'''
         
         # Duration of Lambda Function Metrics and Alarms
-        lambdafunc=lambdafunc.current_version
+        lambdafunc1=lambdafunc.current_version
         fail_metric=self.failure_metric(function_name)
         
         
+        
+        
         # Auto RollBack when lambda triggered
-        # self.roll_back(fail_metric,lambdafunc)
+        self.roll_back(fail_metric,lambdafunc1)
+        
+        
         
         
         # Invocations of Lambda Function Metrics and Alarms

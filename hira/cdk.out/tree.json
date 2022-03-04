@@ -3509,6 +3509,32 @@
                           "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
                           "version": "2.15.0"
                         }
+                      },
+                      "CurrentVersion": {
+                        "id": "CurrentVersion",
+                        "path": "HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/CurrentVersion",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Version",
+                              "aws:cdk:cloudformation:props": {
+                                "functionName": {
+                                  "Ref": "hiraazizlambda5E90E1FE"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnVersion",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.Version",
+                          "version": "2.15.0"
+                        }
                       }
                     },
                     "constructInfo": {
@@ -4295,6 +4321,45 @@
                       "version": "2.15.0"
                     }
                   },
+                  "failure_alarm_duration": {
+                    "id": "failure_alarm_duration",
+                    "path": "HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                            "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "hiraazizlambda5E90E1FE"
+                                }
+                              }
+                            ],
+                            "metricName": "Duration",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Average",
+                            "threshold": 12000
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.15.0"
+                    }
+                  },
                   "CDKMetadata": {
                     "id": "CDKMetadata",
                     "path": "HiraPipelineStack/beta/hiraaziz3stack/CDKMetadata",
@@ -4933,6 +4998,32 @@
                         },
                         "constructInfo": {
                           "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "CurrentVersion": {
+                        "id": "CurrentVersion",
+                        "path": "HiraPipelineStack/prod/hiraaziz3stack/hiraazizlambda/CurrentVersion",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "HiraPipelineStack/prod/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Version",
+                              "aws:cdk:cloudformation:props": {
+                                "functionName": {
+                                  "Ref": "hiraazizlambda5E90E1FE"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnVersion",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.Version",
                           "version": "2.15.0"
                         }
                       }
@@ -5718,6 +5809,45 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_lambda.Function",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "failure_alarm_duration": {
+                    "id": "failure_alarm_duration",
+                    "path": "HiraPipelineStack/prod/hiraaziz3stack/failure_alarm_duration",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "HiraPipelineStack/prod/hiraaziz3stack/failure_alarm_duration/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                            "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "hiraazizlambda5E90E1FE"
+                                }
+                              }
+                            ],
+                            "metricName": "Duration",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Average",
+                            "threshold": 12000
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
                       "version": "2.15.0"
                     }
                   },
