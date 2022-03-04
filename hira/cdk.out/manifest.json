@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/726e937ad2f7fe89dd1c76165d616b60633f4b577dacd2391a74d38cc78cda00.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3b8ad00a6405ffa80ee1509ca965876f0b7832c741543c12730d862aae853fd2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -53,16 +53,16 @@
         "HiraPipelineStack.assets"
       ],
       "metadata": {
-        "/HiraPipelineStack/Laiba-Pipeline-Role/Resource": [
+        "/HiraPipelineStack/Hira-Pipeline-Role/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LaibaPipelineRole95A45905"
+            "data": "HiraPipelineRole29171538"
           }
         ],
-        "/HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy/Resource": [
+        "/HiraPipelineStack/Hira-Pipeline-Role/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LaibaPipelineRoleDefaultPolicyF8D41CDC"
+            "data": "HiraPipelineRoleDefaultPolicy122FEFF1"
           }
         ],
         "/HiraPipelineStack/web_Pipeline/Pipeline/ArtifactsBucket/Resource": [

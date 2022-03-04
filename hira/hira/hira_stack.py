@@ -96,12 +96,12 @@ class HiraStack(Stack):
         '''Creating Failure Metrics'''
         
         # Duration of Lambda Function Metrics and Alarms
-        lambdafunc=lambdafunc.current_version
-        fail_metric=self.failure_metric(function_name)
+        # lambdafunc=lambdafunc.current_version
+        # fail_metric=self.failure_metric(function_name)
         
         
         # Auto RollBack when lambda triggered
-        self.roll_back(fail_metric,lambdafunc)
+        # self.roll_back(fail_metric,lambdafunc)
         
         
         # Invocations of Lambda Function Metrics and Alarms

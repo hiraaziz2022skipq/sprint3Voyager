@@ -42,8 +42,9 @@ class HirapipelineStack(Stack):
         unit_test=pipelines.ShellStep("unit_test", commands=["cd hira/","pip install -r requirements.txt",
                                                              "pip install -r requirements-dev.txt","pytest"])
         
+        # pre=[unit_test]
         # Adding to the pipeline
-        pipeline.add_stage(beta, pre=[unit_test])
+        pipeline.add_stage(beta)
 
         ordered_steps = pipelines.Step.sequence([pipelines.ManualApprovalStep("A")])
         pipeline.add_stage(prod, pre=ordered_steps)

@@ -16,13 +16,13 @@
         "id": "HiraPipelineStack",
         "path": "HiraPipelineStack",
         "children": {
-          "Laiba-Pipeline-Role": {
-            "id": "Laiba-Pipeline-Role",
-            "path": "HiraPipelineStack/Laiba-Pipeline-Role",
+          "Hira-Pipeline-Role": {
+            "id": "Hira-Pipeline-Role",
+            "path": "HiraPipelineStack/Hira-Pipeline-Role",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "HiraPipelineStack/Laiba-Pipeline-Role/Resource",
+                "path": "HiraPipelineStack/Hira-Pipeline-Role/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                   "aws:cdk:cloudformation:props": {
@@ -97,31 +97,7 @@
                             {
                               "Ref": "AWS::Partition"
                             },
-                            ":iam::aws:policy/AWSLambdaInvocation-DynamoDB"
-                          ]
-                        ]
-                      },
-                      {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "arn:",
-                            {
-                              "Ref": "AWS::Partition"
-                            },
                             ":iam::aws:policy/AwsCloudFormationFullAccess"
-                          ]
-                        ]
-                      },
-                      {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "arn:",
-                            {
-                              "Ref": "AWS::Partition"
-                            },
-                            ":iam::aws:policy/AmazonSSMFullAccess"
                           ]
                         ]
                       },
@@ -159,11 +135,11 @@
               },
               "DefaultPolicy": {
                 "id": "DefaultPolicy",
-                "path": "HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy",
+                "path": "HiraPipelineStack/Hira-Pipeline-Role/DefaultPolicy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy/Resource",
+                    "path": "HiraPipelineStack/Hira-Pipeline-Role/DefaultPolicy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                       "aws:cdk:cloudformation:props": {
@@ -300,10 +276,10 @@
                           ],
                           "Version": "2012-10-17"
                         },
-                        "policyName": "LaibaPipelineRoleDefaultPolicyF8D41CDC",
+                        "policyName": "HiraPipelineRoleDefaultPolicy122FEFF1",
                         "roles": [
                           {
-                            "Ref": "LaibaPipelineRole95A45905"
+                            "Ref": "HiraPipelineRole29171538"
                           }
                         ]
                       }
@@ -1213,7 +1189,7 @@
                                     },
                                     "serviceRole": {
                                       "Fn::GetAtt": [
-                                        "LaibaPipelineRole95A45905",
+                                        "HiraPipelineRole29171538",
                                         "Arn"
                                       ]
                                     },

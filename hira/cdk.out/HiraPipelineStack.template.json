@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "LaibaPipelineRole95A45905": {
+    "HiraPipelineRole29171538": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -74,31 +74,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":iam::aws:policy/AWSLambdaInvocation-DynamoDB"
-              ]
-            ]
-          },
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
                 ":iam::aws:policy/AwsCloudFormationFullAccess"
-              ]
-            ]
-          },
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":iam::aws:policy/AmazonSSMFullAccess"
               ]
             ]
           },
@@ -129,10 +105,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/Laiba-Pipeline-Role/Resource"
+        "aws:cdk:path": "HiraPipelineStack/Hira-Pipeline-Role/Resource"
       }
     },
-    "LaibaPipelineRoleDefaultPolicyF8D41CDC": {
+    "HiraPipelineRoleDefaultPolicy122FEFF1": {
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyDocument": {
@@ -268,15 +244,15 @@
           ],
           "Version": "2012-10-17"
         },
-        "PolicyName": "LaibaPipelineRoleDefaultPolicyF8D41CDC",
+        "PolicyName": "HiraPipelineRoleDefaultPolicy122FEFF1",
         "Roles": [
           {
-            "Ref": "LaibaPipelineRole95A45905"
+            "Ref": "HiraPipelineRole29171538"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy/Resource"
+        "aws:cdk:path": "HiraPipelineStack/Hira-Pipeline-Role/DefaultPolicy/Resource"
       }
     },
     "webPipelineArtifactsBucket2A9751F6": {
@@ -1067,7 +1043,7 @@
         },
         "ServiceRole": {
           "Fn::GetAtt": [
-            "LaibaPipelineRole95A45905",
+            "HiraPipelineRole29171538",
             "Arn"
           ]
         },
