@@ -52,10 +52,11 @@ class HiraStack(Stack):
 
         '''Cloudwatch'''
         '''SNS'''
+        
         #Creating sns topic
         my_topic = sns.Topic(self, "myTopic")
         #adding subscription email
-        my_topic.add_subscription(subscriptions.EmailSubscription("hira.aziz.skipq@gmail.com"))
+        my_topic.add_subscription(subscriptions.EmailSubscription(constants.my_email))
         # email_address = CfnParameter(self, 'subscriptionEmail')
         # my_topic.add_subscription(subscriptions.EmailSubscription(email_address.value.toString()))
 

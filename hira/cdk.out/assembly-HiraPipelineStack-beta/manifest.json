@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3ab3352564b121eeeb5475b29a8b75d65ecb165ca87a9e9e1be5e31423cb931b.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2a007113e42fa34bda7f457307eb92b8ff5f1dbc1e09175a9821a1153c0f3b77.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -91,7 +91,7 @@
         "/HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72"
+            "data": "hiraazizlambdaCurrentVersionC19B5D0A75e1b4152d44fbbefbbad2cf6b538d04"
           }
         ],
         "/HiraPipelineStack/beta/hiraaziz3stack/rule/Resource": [
