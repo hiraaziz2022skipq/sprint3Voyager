@@ -43,13 +43,15 @@ class HirapipelineStack(Stack):
                                                              "pip install -r requirements-dev.txt","pytest"])
         
         
-        # Adding to the pipeline
+        # Adding to the pipeline and  unit test as pre stage
         pipeline.add_stage(beta,pre=[unit_test])
 
         
+        # Adding product to pipeline and manual approval as pre stage
         pipeline.add_stage(prod, pre = [pipelines.ManualApprovalStep("Approve prod stage")])
 
 
+    # Assigning roles to Pipeline
     def create_pipeline_role(self):
             role = iam_.Role(self, "Hira-Pipeline-Role",
                    assumed_by=iam_.CompositePrincipal(

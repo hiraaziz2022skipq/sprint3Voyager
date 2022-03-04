@@ -201,6 +201,8 @@ class HiraStack(Stack):
 
 
     def create_table(self):
+        
+        # creating dynamo db table, partition key should be unique
         table = dynamodb.Table(self, constants.table_id,
                            partition_key=dynamodb.Attribute(name=constants.partition_key,
                                                             type=dynamodb.AttributeType.STRING),
@@ -211,11 +213,14 @@ class HiraStack(Stack):
     # Failure Metrics Alarm
     
     def failure_metric(self,function_name):
+        
+        # Taking metrics from cloud watch
         failure_metrics_duration = cloudwatch.Metric(namespace=constants.fail_metric_namespace,
                                                         metric_name=constants.fail_metricname, 
                                                         dimensions_map={"FunctionName":function_name}
                                                         )
 
+        # Creating an alarm
         failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
                                         threshold=constants.fail_metric_threshold,
                                         evaluation_periods=1,
@@ -228,8 +233,10 @@ class HiraStack(Stack):
     
     # Auto Roll Back
     def roll_back(self, failure_metrics_duration,lambdafunc):
-        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc)
+        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc)    # version will store current version of lambda
         
+        
+        # Deploy previous version of lambda if alarms gets triggered
         deployment_group = codedeploy.LambdaDeploymentGroup(self, constants.deploy_id,
                            alias=alias,deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_5_MINUTES,
                            alarms=[failure_metrics_duration] )
