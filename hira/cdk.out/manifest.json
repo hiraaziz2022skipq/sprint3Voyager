@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3b8ad00a6405ffa80ee1509ca965876f0b7832c741543c12730d862aae853fd2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b42090bcbbb7bb05083837d99b32e7bb317a785036daefc73cd2ad9c9d96c466.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -159,36 +159,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "webPipelineAssetsFileAsset3CodePipelineActionRoleDefaultPolicyD042A30D"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/unit_test/Role/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelinebetaunittestRoleABFB3093"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/unit_test/Role/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelinebetaunittestRoleDefaultPolicyA95E1707"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/unit_test/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelinebetaunittestAC060475"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/CodePipelineActionRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelinebetaunittestCodePipelineActionRoleCA0B2C10"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/CodePipelineActionRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelinebetaunittestCodePipelineActionRoleDefaultPolicy124A5F19"
           }
         ],
         "/HiraPipelineStack/web_Pipeline/Pipeline/prod/A/CodePipelineActionRole/Resource": [

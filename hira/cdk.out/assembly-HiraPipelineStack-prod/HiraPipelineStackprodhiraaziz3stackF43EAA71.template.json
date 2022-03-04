@@ -373,17 +373,6 @@
         "aws:asset:property": "Code"
       }
     },
-    "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72": {
-      "Type": "AWS::Lambda::Version",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "hiraazizlambda5E90E1FE"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource"
-      }
-    },
     "ruleF2C1DCDC": {
       "Type": "AWS::Events::Rule",
       "Properties": {
@@ -889,158 +878,10 @@
         "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/hira_lambdadynamo/myTopic/Resource"
       }
     },
-    "failurealarmduration5EA81852": {
-      "Type": "AWS::CloudWatch::Alarm",
-      "Properties": {
-        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
-        "EvaluationPeriods": 1,
-        "DatapointsToAlarm": 1,
-        "Dimensions": [
-          {
-            "Name": "FunctionName",
-            "Value": {
-              "Ref": "hiraazizlambda5E90E1FE"
-            }
-          }
-        ],
-        "MetricName": "Duration",
-        "Namespace": "AWS/Lambda",
-        "Period": 300,
-        "Statistic": "Average",
-        "Threshold": 12000
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/failure_alarm_duration/Resource"
-      }
-    },
-    "LambdaAlias9C15A666": {
-      "Type": "AWS::Lambda::Alias",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "hiraazizlambda5E90E1FE"
-        },
-        "FunctionVersion": {
-          "Fn::GetAtt": [
-            "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72",
-            "Version"
-          ]
-        },
-        "Name": "Current Version"
-      },
-      "UpdatePolicy": {
-        "CodeDeployLambdaAliasUpdate": {
-          "ApplicationName": {
-            "Ref": "DeploylambdanewversionApplication68811F1D"
-          },
-          "DeploymentGroupName": {
-            "Ref": "DeploylambdanewversionECE258D8"
-          }
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/LambdaAlias/Resource"
-      }
-    },
-    "DeploylambdanewversionApplication68811F1D": {
-      "Type": "AWS::CodeDeploy::Application",
-      "Properties": {
-        "ComputePlatform": "Lambda"
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/Deploy lambda new version/Application/Resource"
-      }
-    },
-    "DeploylambdanewversionServiceRoleC219964C": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "codedeploy.",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ".",
-                      {
-                        "Ref": "AWS::URLSuffix"
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":iam::aws:policy/service-role/AWSCodeDeployRoleForLambdaLimited"
-              ]
-            ]
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/Deploy lambda new version/ServiceRole/Resource"
-      }
-    },
-    "DeploylambdanewversionECE258D8": {
-      "Type": "AWS::CodeDeploy::DeploymentGroup",
-      "Properties": {
-        "ApplicationName": {
-          "Ref": "DeploylambdanewversionApplication68811F1D"
-        },
-        "ServiceRoleArn": {
-          "Fn::GetAtt": [
-            "DeploylambdanewversionServiceRoleC219964C",
-            "Arn"
-          ]
-        },
-        "AlarmConfiguration": {
-          "Alarms": [
-            {
-              "Name": {
-                "Ref": "failurealarmduration5EA81852"
-              }
-            }
-          ],
-          "Enabled": true
-        },
-        "AutoRollbackConfiguration": {
-          "Enabled": true,
-          "Events": [
-            "DEPLOYMENT_FAILURE",
-            "DEPLOYMENT_STOP_ON_ALARM"
-          ]
-        },
-        "DeploymentConfigName": "CodeDeployDefault.LambdaCanary10Percent5Minutes",
-        "DeploymentStyle": {
-          "DeploymentOption": "WITH_TRAFFIC_CONTROL",
-          "DeploymentType": "BLUE_GREEN"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/Deploy lambda new version/Resource"
-      }
-    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/12S224CIRCGn8V7pB7SB1i3aW+8MGp6u2GBKpXDhoGaDeHdO7u4aryafz4GmPlhRZfvdDFjV5hzcZlr1dJ0CIxfCKImwZqmTeQXGUj9Y2+qhJ3TivcPfMtLsmEgM4F1k4TstOuNtIGWpY87IAxABqDVEDLRzLSC0YQnblkv/bf0oJwlB2VPWgZnP6PlYSB3gaV3PZUje5I76Y2CMau0YjCwUWSimKFp77Qc2BgfIxWVifzDPgHL4q0MI85lER1dp/jAijjEFrhX3dTXc54J1y6KKwv8TFOlmTelDxSZiN4y4wQaf2RtuWYUuMsJWfyjaTu68zDvy7vYkUKrrsN22XT1S/qyJ09ON3pwucF35lrR6gq1VqPxZHwQ/AUndJ7UEYIzewkuel5MmPQzrJ0Vqgy768PZ2bc1XS7oavYLSs19tEEZSfcl/gOZHGwidgIAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/01Ry27DIBD8ltwJzUP9gMRVTz1EcdSrhYEmW/OwWGhkIf69YPI6zeywsLPDhq7f6WrBrrjkYlgq6GlsPeMDyVIXcUvjPvBBetL8mBurcLAK+PSUb3Ut9gxlIrjtopCjspOWxtN69PEQCEOUHumuQCKK6V4wGvOLX2yS7ls6BGtIC+aspLfmMxjui/IgufWVH6TTgOVSIsA0jUerZDmY8Wm4skTkX3aBuS3c2jJm1yZLJzsCL1olbeiROxjvk17rRLiyQVyZ5xcad4o5XVpmkoiYDNNW5FhPrK9jZpLuC3eqLNvluLkCurtio2Den8y55M845wBIE9BbfZRog+PV7Z2/io01Aqqrw+Qv1rxt6XpFN4tfBFi6YDxoSY8V/wFyfJG4/QEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "HiraPipelineStack/prod/hiraaziz3stack/CDKMetadata/Default"

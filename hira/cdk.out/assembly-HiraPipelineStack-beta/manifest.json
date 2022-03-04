@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3ab3352564b121eeeb5475b29a8b75d65ecb165ca87a9e9e1be5e31423cb931b.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ac57795916024cac8e491c32e5dc6ae594c29b8bb23e248372de50e1e35e0237.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -86,12 +86,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "hiraazizlambda5E90E1FE"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/hiraazizlambda/CurrentVersion/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "hiraazizlambdaCurrentVersionC19B5D0Adf0b03d1cd619fd096ffa30b9eec6b72"
           }
         ],
         "/HiraPipelineStack/beta/hiraaziz3stack/rule/Resource": [
@@ -200,36 +194,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "hiralambdadynamomyTopicF4357998"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/failure_alarm_duration/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "failurealarmduration5EA81852"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/LambdaAlias/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "LambdaAlias9C15A666"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/Deploy lambda new version/Application/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeploylambdanewversionApplication68811F1D"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/Deploy lambda new version/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeploylambdanewversionServiceRoleC219964C"
-          }
-        ],
-        "/HiraPipelineStack/beta/hiraaziz3stack/Deploy lambda new version/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeploylambdanewversionECE258D8"
           }
         ],
         "/HiraPipelineStack/beta/hiraaziz3stack/CDKMetadata/Default": [
