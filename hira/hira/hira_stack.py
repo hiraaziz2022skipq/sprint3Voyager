@@ -96,10 +96,11 @@ class HiraStack(Stack):
         '''Creating Failure Metrics'''
         
         # Duration of Lambda Function Metrics and Alarms
-        # fail_metric=self.failure_metric(function_name)
+        lambdafunc=lambdafunc.current_version
+        fail_metric=self.failure_metric(function_name)
         
         # Auto RollBack when lambda triggered
-        # self.roll_back(fail_metric,lambdafunc)
+        self.roll_back(fail_metric,lambdafunc)
         
         # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",
@@ -219,7 +220,7 @@ class HiraStack(Stack):
     # Auto Roll Back
     
     def roll_back(self, failure_metrics_duration,lambdafunc):
-        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
+        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc)
         
         deployment_group = codedeploy.LambdaDeploymentGroup(self, constants.deploy_id,
                            alias=alias,deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_5_MINUTES,
