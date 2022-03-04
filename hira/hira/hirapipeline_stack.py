@@ -22,6 +22,16 @@ class HirapipelineStack(Stack):
                                                       authentication=SecretValue.secrets_manager('webtken'),
                                                       trigger=cpactions_.GitHubTrigger('POLL'))
         
+        '''
+            CodeBuildStep()
+            
+            id -> 'synth'
+            input -> source
+            commands -> commands to run in pipeline
+            primary_output_directory -> : Directory that will contain primary output fileset when script run
+            role -> role pass to pipeline
+        '''
+        
         synth=pipelines.CodeBuildStep("Synth",
                                     input= source,
                                     commands=["cd hira/", "pip install -r requirements.txt",

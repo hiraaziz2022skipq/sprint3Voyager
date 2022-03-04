@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3b8ad00a6405ffa80ee1509ca965876f0b7832c741543c12730d862aae853fd2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ed0e04c8e51da22318f7412171739d259a5d9a805d110b27751bb04fb9dd08b1.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -191,10 +191,10 @@
             "data": "webPipelinebetaunittestCodePipelineActionRoleDefaultPolicy124A5F19"
           }
         ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/prod/A/CodePipelineActionRole/Resource": [
+        "/HiraPipelineStack/web_Pipeline/Pipeline/prod/Approve_prod_stage/CodePipelineActionRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "webPipelineprodACodePipelineActionRoleE41CE6DA"
+            "data": "webPipelineprodApproveprodstageCodePipelineActionRole1A78034F"
           }
         ],
         "/HiraPipelineStack/web_Pipeline/UpdatePipeline/SelfMutation/Role/Resource": [

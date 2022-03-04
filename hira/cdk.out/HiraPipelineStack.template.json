@@ -539,7 +539,7 @@
               "Effect": "Allow",
               "Resource": {
                 "Fn::GetAtt": [
-                  "webPipelineprodACodePipelineActionRoleE41CE6DA",
+                  "webPipelineprodApproveprodstageCodePipelineActionRole1A78034F",
                   "Arn"
                 ]
               }
@@ -893,10 +893,10 @@
                   "Provider": "Manual",
                   "Version": "1"
                 },
-                "Name": "A",
+                "Name": "Approve_prod_stage",
                 "RoleArn": {
                   "Fn::GetAtt": [
-                    "webPipelineprodACodePipelineActionRoleE41CE6DA",
+                    "webPipelineprodApproveprodstageCodePipelineActionRole1A78034F",
                     "Arn"
                   ]
                 },
@@ -1662,7 +1662,7 @@
         "aws:cdk:path": "HiraPipelineStack/web_Pipeline/Pipeline/beta/unit_test/CodePipelineActionRole/DefaultPolicy/Resource"
       }
     },
-    "webPipelineprodACodePipelineActionRoleE41CE6DA": {
+    "webPipelineprodApproveprodstageCodePipelineActionRole1A78034F": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -1694,7 +1694,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "HiraPipelineStack/web_Pipeline/Pipeline/prod/A/CodePipelineActionRole/Resource"
+        "aws:cdk:path": "HiraPipelineStack/web_Pipeline/Pipeline/prod/Approve_prod_stage/CodePipelineActionRole/Resource"
       }
     },
     "webPipelineUpdatePipelineSelfMutationRole2937F31A": {

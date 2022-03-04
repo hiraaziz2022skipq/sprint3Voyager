@@ -60,6 +60,7 @@ class HiraStack(Stack):
         # my_topic.add_subscription(subscriptions.EmailSubscription(email_address.value.toString()))
 
 
+        # Creating alarm and generate notification if alarm trigger
         for urls in constants.url:
             dimension={"URL":urls}
 
@@ -78,10 +79,10 @@ class HiraStack(Stack):
         table=self.create_table()
         table_name=table.table_name
 
+
         # Lambda function for Dynamo DB
         dynamo_lambda=self.create_lambda("hira_lambdadynamo","./resources", "dynamo.lambda_handler",self.create_role("dynamo"))
         dynamo_lambda.add_environment('table_name',str(table_name))      # Env var for Dynamo DB
-
         dynamo_lambda.apply_removal_policy(RemovalPolicy.DESTROY)
         
         # Giving permissions
@@ -130,6 +131,8 @@ class HiraStack(Stack):
 
     '''Functions'''
     def create_role(self,name):
+        
+        # Assigning Roles to the lambda function
         lambda_role = iam.Role(self, "Role"+name,
                                assumed_by=iam.ServicePrincipal("lambda.amazonaws.com"),
                                managed_policies=[
@@ -143,7 +146,16 @@ class HiraStack(Stack):
 
 
 
-
+    '''
+        create_lambda()
+        
+        id -> string value
+        asset -> Folder that contains code
+        runtime -> Language
+        handler -> Lambda function
+        timeout -> After how long lambda will end
+    
+    '''
     # Lambda function for web health
     def create_lambda(self, id, asset, handler,lambda_role):
         return lambda_.Function(self, id,
@@ -169,10 +181,33 @@ class HiraStack(Stack):
 
     '''Generating Alarm when latency and availability exceeds threshold'''
     def create_alarm_latency(self,dimension,url):
+        
+        '''
+            cloudwatch.Metric()
+            
+            metric_name ->  Name of the metric
+            namespace ->    Namespace of the metric data
+            period ->   After how many minutes this will check datapoints in published metrics
+            dimensions ->   It takes key and value. What we are monitoring
+            
+        '''
+        
         metric_latency = cloudwatch.Metric(metric_name=constants.url_merticname_latency,
                                            namespace=constants.url_monitor_namespace, period=Duration.minutes(1),         # period : After how many minutes this will check datapoints in published metrics.
                                            dimensions_map=dimension
                                            )
+        
+        '''
+            cloudwatch.Alarm()
+            
+            id -> string value
+            metric -> Function to fetch published metrics
+            evaluation_periods -> After how many evaluation data will be compared to threshold
+            comparison_operator -> used to compare
+            datapoints_to_alarm -> After how many data points breaching, alarm should be triggered. 
+            
+        '''
+        
         # Generating alarm if data points of latency exceeds threshold=0.6
         latency_alarm = cloudwatch.Alarm(self, constants.latency_id + url, metric=metric_latency, evaluation_periods=1,           # Eva_peiord : after how many evalutaion data will be comapred to threshold
                                          threshold=constants.threshold_latency,
@@ -200,6 +235,7 @@ class HiraStack(Stack):
         return avail_alarm
 
 
+    # Create Table to store logs in dynamodb
     def create_table(self):
         
         # creating dynamo db table, partition key should be unique
@@ -210,9 +246,18 @@ class HiraStack(Stack):
                            )
         return table
     
-    # Failure Metrics Alarm
     
+    
+    # Failure Metrics Alarm
     def failure_metric(self,function_name):
+        
+        '''
+            cloudwatch.Metric()
+            
+            namespace -> AWS/Lambda
+            metric_name -> Duration
+            dimentions_map -> FunctionName and lambda function name
+        '''
         
         # Taking metrics from cloud watch
         failure_metrics_duration = cloudwatch.Metric(namespace=constants.fail_metric_namespace,
@@ -229,6 +274,7 @@ class HiraStack(Stack):
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
                                        )
         return failure_alarm_duration
+    
     
     
     # Auto Roll Back
