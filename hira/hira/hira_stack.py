@@ -21,26 +21,6 @@ from aws_cdk import (
 )
 from resources import constants as constants
 from constructs import Construct
-# url=["www.skipq.com","www.google.com","www.facebook.com","www.youtube.com"]
-# url_monitor_namespace="Hira_Aziz_Metrics"
-
-# url_merticname_availbility="url_available"
-# url_merticname_latency="url_latency"
-
-# latency_dimension_name='latency_dimension'
-# avail_dimension_name='availability_dimension'
-
-# threshold_availability = 1
-# threshold_latency = 0.6
-
-# partition_key="Hiraaziz_URLs_DB"
-# sort_key="timestamp"
-
-# latency_id="hira_latency_metrics"
-# avail_id="hira_availability_metric"
-# bucket_id="hiraazizbuckets"
-
-# table_id="Hira_aziz_Tabless"
 
 
 class HiraStack(Stack):
@@ -116,10 +96,10 @@ class HiraStack(Stack):
         '''Creating Failure Metrics'''
         
         # Duration of Lambda Function Metrics and Alarms
-        fail_metric=self.failure_metric(function_name)
+        # fail_metric=self.failure_metric(function_name)
         
         # Auto RollBack when lambda triggered
-        self.roll_back(fail_metric,lambdafunc)
+        # self.roll_back(fail_metric,lambdafunc)
         
         # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",

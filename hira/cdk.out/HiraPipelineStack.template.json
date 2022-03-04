@@ -2090,7 +2090,7 @@
           ]
         },
         "Source": {
-          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-HiraPipelineStack-beta/HiraPipelineStackbetahiraaziz3stack6902FED9.assets.json\\\" --verbose publish \\\"af8c5db45271dfa8fc8a828dacdd1e003c6985ff22df045c31031c7bf22fa5da:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-HiraPipelineStack-beta/HiraPipelineStackbetahiraaziz3stack6902FED9.assets.json\\\" --verbose publish \\\"1c0eed5495c842348f7a0df9c21f2949edc11ee0644a91cdd3d05e4343860cd8:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
           "Type": "CODEPIPELINE"
         },
         "Cache": {
