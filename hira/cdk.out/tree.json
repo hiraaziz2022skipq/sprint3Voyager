@@ -16,6 +16,315 @@
         "id": "HiraPipelineStack",
         "path": "HiraPipelineStack",
         "children": {
+          "Laiba-Pipeline-Role": {
+            "id": "Laiba-Pipeline-Role",
+            "path": "HiraPipelineStack/Laiba-Pipeline-Role",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "HiraPipelineStack/Laiba-Pipeline-Role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                          }
+                        },
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "sns.amazonaws.com"
+                          }
+                        },
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "codebuild.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/CloudWatchFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonDynamoDBFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AWSLambdaInvocation-DynamoDB"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AwsCloudFormationFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSSMFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AWSCodePipeline_FullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonS3FullAccess"
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.15.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "logs:CreateLogGroup",
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":logs:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":log-group:/aws/codebuild/",
+                                      {
+                                        "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
+                                      }
+                                    ]
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":logs:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":log-group:/aws/codebuild/",
+                                      {
+                                        "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
+                                      },
+                                      ":*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Action": [
+                                "codebuild:CreateReportGroup",
+                                "codebuild:CreateReport",
+                                "codebuild:UpdateReport",
+                                "codebuild:BatchPutTestCases",
+                                "codebuild:BatchPutCodeCoverages"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":codebuild:",
+                                    {
+                                      "Ref": "AWS::Region"
+                                    },
+                                    ":",
+                                    {
+                                      "Ref": "AWS::AccountId"
+                                    },
+                                    ":report-group/",
+                                    {
+                                      "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
+                                    },
+                                    "-*"
+                                  ]
+                                ]
+                              }
+                            },
+                            {
+                              "Action": [
+                                "s3:GetObject*",
+                                "s3:GetBucket*",
+                                "s3:List*",
+                                "s3:DeleteObject*",
+                                "s3:PutObject",
+                                "s3:PutObjectLegalHold",
+                                "s3:PutObjectRetention",
+                                "s3:PutObjectTagging",
+                                "s3:PutObjectVersionTagging",
+                                "s3:Abort*"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "webPipelineArtifactsBucket2A9751F6",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "webPipelineArtifactsBucket2A9751F6",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "LaibaPipelineRoleDefaultPolicyF8D41CDC",
+                        "roles": [
+                          {
+                            "Ref": "LaibaPipelineRole95A45905"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.15.0"
+            }
+          },
           "web_Pipeline": {
             "id": "web_Pipeline",
             "path": "HiraPipelineStack/web_Pipeline",
@@ -886,203 +1195,6 @@
                             "id": "CdkBuildProject",
                             "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject",
                             "children": {
-                              "Role": {
-                                "id": "Role",
-                                "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role",
-                                "children": {
-                                  "Resource": {
-                                    "id": "Resource",
-                                    "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/Resource",
-                                    "attributes": {
-                                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                                      "aws:cdk:cloudformation:props": {
-                                        "assumeRolePolicyDocument": {
-                                          "Statement": [
-                                            {
-                                              "Action": "sts:AssumeRole",
-                                              "Effect": "Allow",
-                                              "Principal": {
-                                                "Service": "codebuild.amazonaws.com"
-                                              }
-                                            }
-                                          ],
-                                          "Version": "2012-10-17"
-                                        }
-                                      }
-                                    },
-                                    "constructInfo": {
-                                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                                      "version": "2.15.0"
-                                    }
-                                  },
-                                  "DefaultPolicy": {
-                                    "id": "DefaultPolicy",
-                                    "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy",
-                                    "children": {
-                                      "Resource": {
-                                        "id": "Resource",
-                                        "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy/Resource",
-                                        "attributes": {
-                                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
-                                          "aws:cdk:cloudformation:props": {
-                                            "policyDocument": {
-                                              "Statement": [
-                                                {
-                                                  "Action": [
-                                                    "logs:CreateLogGroup",
-                                                    "logs:CreateLogStream",
-                                                    "logs:PutLogEvents"
-                                                  ],
-                                                  "Effect": "Allow",
-                                                  "Resource": [
-                                                    {
-                                                      "Fn::Join": [
-                                                        "",
-                                                        [
-                                                          "arn:",
-                                                          {
-                                                            "Ref": "AWS::Partition"
-                                                          },
-                                                          ":logs:",
-                                                          {
-                                                            "Ref": "AWS::Region"
-                                                          },
-                                                          ":",
-                                                          {
-                                                            "Ref": "AWS::AccountId"
-                                                          },
-                                                          ":log-group:/aws/codebuild/",
-                                                          {
-                                                            "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
-                                                          }
-                                                        ]
-                                                      ]
-                                                    },
-                                                    {
-                                                      "Fn::Join": [
-                                                        "",
-                                                        [
-                                                          "arn:",
-                                                          {
-                                                            "Ref": "AWS::Partition"
-                                                          },
-                                                          ":logs:",
-                                                          {
-                                                            "Ref": "AWS::Region"
-                                                          },
-                                                          ":",
-                                                          {
-                                                            "Ref": "AWS::AccountId"
-                                                          },
-                                                          ":log-group:/aws/codebuild/",
-                                                          {
-                                                            "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
-                                                          },
-                                                          ":*"
-                                                        ]
-                                                      ]
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "Action": [
-                                                    "codebuild:CreateReportGroup",
-                                                    "codebuild:CreateReport",
-                                                    "codebuild:UpdateReport",
-                                                    "codebuild:BatchPutTestCases",
-                                                    "codebuild:BatchPutCodeCoverages"
-                                                  ],
-                                                  "Effect": "Allow",
-                                                  "Resource": {
-                                                    "Fn::Join": [
-                                                      "",
-                                                      [
-                                                        "arn:",
-                                                        {
-                                                          "Ref": "AWS::Partition"
-                                                        },
-                                                        ":codebuild:",
-                                                        {
-                                                          "Ref": "AWS::Region"
-                                                        },
-                                                        ":",
-                                                        {
-                                                          "Ref": "AWS::AccountId"
-                                                        },
-                                                        ":report-group/",
-                                                        {
-                                                          "Ref": "webPipelineBuildSynthCdkBuildProjectE80155AA"
-                                                        },
-                                                        "-*"
-                                                      ]
-                                                    ]
-                                                  }
-                                                },
-                                                {
-                                                  "Action": [
-                                                    "s3:GetObject*",
-                                                    "s3:GetBucket*",
-                                                    "s3:List*",
-                                                    "s3:DeleteObject*",
-                                                    "s3:PutObject",
-                                                    "s3:PutObjectLegalHold",
-                                                    "s3:PutObjectRetention",
-                                                    "s3:PutObjectTagging",
-                                                    "s3:PutObjectVersionTagging",
-                                                    "s3:Abort*"
-                                                  ],
-                                                  "Effect": "Allow",
-                                                  "Resource": [
-                                                    {
-                                                      "Fn::GetAtt": [
-                                                        "webPipelineArtifactsBucket2A9751F6",
-                                                        "Arn"
-                                                      ]
-                                                    },
-                                                    {
-                                                      "Fn::Join": [
-                                                        "",
-                                                        [
-                                                          {
-                                                            "Fn::GetAtt": [
-                                                              "webPipelineArtifactsBucket2A9751F6",
-                                                              "Arn"
-                                                            ]
-                                                          },
-                                                          "/*"
-                                                        ]
-                                                      ]
-                                                    }
-                                                  ]
-                                                }
-                                              ],
-                                              "Version": "2012-10-17"
-                                            },
-                                            "policyName": "webPipelineBuildSynthCdkBuildProjectRoleDefaultPolicy0DAB944E",
-                                            "roles": [
-                                              {
-                                                "Ref": "webPipelineBuildSynthCdkBuildProjectRole805AF353"
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        "constructInfo": {
-                                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                                          "version": "2.15.0"
-                                        }
-                                      }
-                                    },
-                                    "constructInfo": {
-                                      "fqn": "aws-cdk-lib.aws_iam.Policy",
-                                      "version": "2.15.0"
-                                    }
-                                  }
-                                },
-                                "constructInfo": {
-                                  "fqn": "aws-cdk-lib.aws_iam.Role",
-                                  "version": "2.15.0"
-                                }
-                              },
                               "Resource": {
                                 "id": "Resource",
                                 "path": "HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Resource",
@@ -1101,7 +1213,7 @@
                                     },
                                     "serviceRole": {
                                       "Fn::GetAtt": [
-                                        "webPipelineBuildSynthCdkBuildProjectRole805AF353",
+                                        "LaibaPipelineRole95A45905",
                                         "Arn"
                                       ]
                                     },

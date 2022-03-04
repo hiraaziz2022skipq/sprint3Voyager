@@ -50,7 +50,7 @@ class HirapipelineStack(Stack):
 
 
     def create_pipeline_role(self):
-            role = iam_.Role(self, "Laiba-Pipeline-Role",
+            role = iam_.Role(self, "Hira-Pipeline-Role",
                    assumed_by=iam_.CompositePrincipal(
                        iam_.ServicePrincipal("lambda.amazonaws.com"),
                        iam_.ServicePrincipal("sns.amazonaws.com"),
@@ -59,9 +59,8 @@ class HirapipelineStack(Stack):
                     iam_.ManagedPolicy.from_aws_managed_policy_name('CloudWatchFullAccess'),
                     iam_.ManagedPolicy.from_aws_managed_policy_name('AmazonDynamoDBFullAccess'),
                     iam_.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSLambdaBasicExecutionRole'),
-                    iam_.ManagedPolicy.from_aws_managed_policy_name('AWSLambdaInvocation-DynamoDB'),
+                    # iam_.ManagedPolicy.from_aws_managed_policy_name('AWSLambdaInvocation-DynamoDB'),
                     iam_.ManagedPolicy.from_aws_managed_policy_name("AwsCloudFormationFullAccess"),
-                    iam_.ManagedPolicy.from_aws_managed_policy_name("AmazonSSMFullAccess"),
                     iam_.ManagedPolicy.from_aws_managed_policy_name("AWSCodePipeline_FullAccess"),
                     iam_.ManagedPolicy.from_aws_managed_policy_name("AmazonS3FullAccess")
                     #iam_.ManagedPolicy.from_aws_managed_policy_name("SecretsManagerReadWrite")

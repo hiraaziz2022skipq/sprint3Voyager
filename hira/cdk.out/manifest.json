@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/53effc43641d44ae6badffaad3d667f36da1cab6c9506c5bf0d0f0f3b8bc3527.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/726e937ad2f7fe89dd1c76165d616b60633f4b577dacd2391a74d38cc78cda00.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -53,6 +53,18 @@
         "HiraPipelineStack.assets"
       ],
       "metadata": {
+        "/HiraPipelineStack/Laiba-Pipeline-Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaibaPipelineRole95A45905"
+          }
+        ],
+        "/HiraPipelineStack/Laiba-Pipeline-Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaibaPipelineRoleDefaultPolicyF8D41CDC"
+          }
+        ],
         "/HiraPipelineStack/web_Pipeline/Pipeline/ArtifactsBucket/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -81,18 +93,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "webPipeline083C52E5"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelineBuildSynthCdkBuildProjectRole805AF353"
-          }
-        ],
-        "/HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "webPipelineBuildSynthCdkBuildProjectRoleDefaultPolicy0DAB944E"
           }
         ],
         "/HiraPipelineStack/web_Pipeline/Pipeline/Build/Synth/CdkBuildProject/Resource": [
