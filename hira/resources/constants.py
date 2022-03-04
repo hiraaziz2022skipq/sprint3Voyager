@@ -19,3 +19,7 @@ avail_id="hira_availability_metric"
 bucket_id="hiraazizbuckets"
 
 table_id="Hira_aziz_Tabless"
+deploy_id="Deploy lambda new version"
+fail_metric_namespace="AWS/Lambda"
+fail_metricname="Duration"
+fail_metric_threshold=12000
