@@ -22,29 +22,29 @@ from aws_cdk import (
 from resources import constants as constants
 from constructs import Construct
 # url=["www.skipq.com","www.google.com","www.facebook.com","www.youtube.com"]
-url_monitor_namespace="Hira_Aziz_Metrics"
+# url_monitor_namespace="Hira_Aziz_Metrics"
 
-url_merticname_availbility="url_available"
-url_merticname_latency="url_latency"
+# url_merticname_availbility="url_available"
+# url_merticname_latency="url_latency"
 
-latency_dimension_name='latency_dimension'
-avail_dimension_name='availability_dimension'
+# latency_dimension_name='latency_dimension'
+# avail_dimension_name='availability_dimension'
 
-threshold_availability = 1
-threshold_latency = 0.6
+# threshold_availability = 1
+# threshold_latency = 0.6
 
-partition_key="Hiraaziz_URLs_DB"
-sort_key="timestamp"
+# partition_key="Hiraaziz_URLs_DB"
+# sort_key="timestamp"
 
-latency_id="hira_latency_metrics"
-avail_id="hira_availability_metric"
-bucket_id="hiraazizbuckets"
+# latency_id="hira_latency_metrics"
+# avail_id="hira_availability_metric"
+# bucket_id="hiraazizbuckets"
 
-table_id="Hira_aziz_Tabless"
-deploy_id="Deploy lambda new version"
-fail_metric_namespace="AWS/Lambda"
-fail_metricname="Duration"
-fail_metric_threshold=12000
+# table_id="Hira_aziz_Tabless"
+# deploy_id="Deploy lambda new version"
+# fail_metric_namespace="AWS/Lambda"
+# fail_metricname="Duration"
+# fail_metric_threshold=12000
 
 class HiraStack(Stack):
 
@@ -183,13 +183,13 @@ class HiraStack(Stack):
 
     '''Generating Alarm when latency and availability exceeds threshold'''
     def create_alarm_latency(self,dimension,url):
-        metric_latency = cloudwatch.Metric(metric_name=url_merticname_latency,
-                                           namespace=url_monitor_namespace, period=Duration.minutes(1),         # period : After how many minutes this will check datapoints in published metrics.
+        metric_latency = cloudwatch.Metric(metric_name=constants.url_merticname_latency,
+                                           namespace=constants.url_monitor_namespace, period=Duration.minutes(1),         # period : After how many minutes this will check datapoints in published metrics.
                                            dimensions_map=dimension
                                            )
         # Generating alarm if data points of latency exceeds threshold=0.6
-        latency_alarm = cloudwatch.Alarm(self, latency_id + url, metric=metric_latency, evaluation_periods=1,           # Eva_peiord : after how many evalutaion data will be comapred to threshold
-                                         threshold=threshold_latency,
+        latency_alarm = cloudwatch.Alarm(self, constants.latency_id + url, metric=metric_latency, evaluation_periods=1,           # Eva_peiord : after how many evalutaion data will be comapred to threshold
+                                         threshold=constants.threshold_latency,
                                          comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                          datapoints_to_alarm=1,
                                          # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
@@ -200,13 +200,13 @@ class HiraStack(Stack):
 
     def create_alarm_availbility(self,dimension,url):
         # Metric for availability
-        metric_avails = cloudwatch.Metric(metric_name=url_merticname_availbility,
-                                          namespace=url_monitor_namespace, period=Duration.minutes(1),
+        metric_avails = cloudwatch.Metric(metric_name=constants.url_merticname_availbility,
+                                          namespace=constants.url_monitor_namespace, period=Duration.minutes(1),
                                           dimensions_map=dimension
                                           )
         # Generating alarm data points of availability exceeds threshold=1
-        avail_alarm = cloudwatch.Alarm(self, avail_id + url, metric=metric_avails, evaluation_periods=1,
-                                       threshold=threshold_availability,
+        avail_alarm = cloudwatch.Alarm(self, constants.avail_id + url, metric=metric_avails, evaluation_periods=1,
+                                       threshold=constants.threshold_availability,
                                        comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                        datapoints_to_alarm=1,
                                        # treat_missing_data=cloudwatch.TreatMissingData.BREACHING
@@ -215,23 +215,23 @@ class HiraStack(Stack):
 
 
     def create_table(self):
-        table = dynamodb.Table(self, table_id,
-                           partition_key=dynamodb.Attribute(name=partition_key,
+        table = dynamodb.Table(self, constants.table_id,
+                           partition_key=dynamodb.Attribute(name=constants.partition_key,
                                                             type=dynamodb.AttributeType.STRING),
-                           sort_key=dynamodb.Attribute(name=sort_key, type=dynamodb.AttributeType.STRING)
+                           sort_key=dynamodb.Attribute(name=constants.sort_key, type=dynamodb.AttributeType.STRING)
                            )
         return table
     
     # Failure Metrics Alarm
     
     def failure_metric(self,function_name):
-        failure_metrics_duration = cloudwatch.Metric(namespace=fail_metric_namespace,
-                                                        metric_name=fail_metricname, 
+        failure_metrics_duration = cloudwatch.Metric(namespace=constants.fail_metric_namespace,
+                                                        metric_name=constants.fail_metricname, 
                                                         dimensions_map={"FunctionName":function_name}
                                                         )
 
         failure_alarm_duration = cloudwatch.Alarm(self, "failure_alarm_duration", metric=failure_metrics_duration,
-                                        threshold=fail_metric_threshold,
+                                        threshold=constants.fail_metric_threshold,
                                         evaluation_periods=1,
                                         comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                                         datapoints_to_alarm=1,
@@ -244,5 +244,6 @@ class HiraStack(Stack):
     def roll_back(self, failure_metrics_duration,lambdafunc):
         alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc.current_version)
         
-        deployment_group = codedeploy.LambdaDeploymentGroup(self, deploy_id,
-                           alias=alias, alarms=[failure_metrics_duration] )
+        deployment_group = codedeploy.LambdaDeploymentGroup(self, constants.deploy_id,
+                           alias=alias,deployment_config=codedeploy.LambdaDeploymentConfig.CANARY_10_PERCENT_5_MINUTES,
+                           alarms=[failure_metrics_duration] )
