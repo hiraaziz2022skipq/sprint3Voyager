@@ -219,8 +219,8 @@ class HiraStack(Stack):
                                        )
         return failure_alarm_duration
     
-    # Auto Roll Back
     
+    # Auto Roll Back
     def roll_back(self, failure_metrics_duration,lambdafunc):
         alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc)
         
