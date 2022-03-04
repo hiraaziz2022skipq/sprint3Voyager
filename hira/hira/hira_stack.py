@@ -100,7 +100,7 @@ class HiraStack(Stack):
         fail_metric=self.failure_metric(function_name)
         
         # Auto RollBack when lambda triggered
-        # self.roll_back(fail_metric,lambdafunc)
+        self.roll_back(fail_metric,lambdafunc)
         
         # Invocations of Lambda Function Metrics and Alarms
         # failure_metrics_Invocations = cloudwatch.Metric(namespace="AWS/Lambda",
