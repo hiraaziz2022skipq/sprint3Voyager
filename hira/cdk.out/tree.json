@@ -4379,7 +4379,7 @@
                                 "Version"
                               ]
                             },
-                            "name": "Current Version"
+                            "name": "Current_Version"
                           }
                         },
                         "constructInfo": {
@@ -6052,7 +6052,7 @@
                                 "Version"
                               ]
                             },
-                            "name": "Current Version"
+                            "name": "Current_Version"
                           }
                         },
                         "constructInfo": {

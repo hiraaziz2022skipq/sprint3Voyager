@@ -31,7 +31,7 @@ avail_id="hira_availability_metric"
 bucket_id="hiraazizbuckets"
 
 # These variables will be used for creating alarm for lambda working and roll back
-deploy_id="Deploy lambda new version"
+deploy_id="Deploy_lambda_new_version"
 fail_metric_namespace="AWS/Lambda"
 fail_metricname="Duration"
 fail_metric_threshold=12000
