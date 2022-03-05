@@ -280,7 +280,7 @@ class HiraStack(Stack):
     
     # Auto Roll Back
     def roll_back(self, failure_metrics_duration,lambdafunc):
-        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current Version",version=lambdafunc)    # version will store current version of lambda
+        alias = lambda_.Alias(self,"LambdaAlias",alias_name="Current_Version",version=lambdafunc)    # version will store current version of lambda
         
         
         # Deploy previous version of lambda if alarms gets triggered
