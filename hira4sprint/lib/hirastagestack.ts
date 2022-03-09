@@ -9,6 +9,6 @@ const app = new cdk.App();
 export class Hirastagestack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
       super(scope, id, props);
-         new Hira4SprintStack(this,"HiraStack")
+         const hira4stack = new Hira4SprintStack(this,"HiraStack")
     }
 }

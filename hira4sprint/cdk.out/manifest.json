@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b036af4428bfe3a3e5301263e3a9ddfb0bba0d570183ea5fc048522a5f1d691b.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2dbbdfac2e60f5ee4b995c2e6802eada5e116a80eb75f30ed0a222cabea9c181.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,18 +39,6 @@
         "Hira4SprintStack.assets"
       ],
       "metadata": {
-        "/Hira4SprintStack/example-iam-role/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "exampleiamroleABFDED29"
-          }
-        ],
-        "/Hira4SprintStack/example-iam-role/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "exampleiamroleDefaultPolicyB15F295B"
-          }
-        ],
         "/Hira4SprintStack/Pipeline/Pipeline/ArtifactsBucket/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -79,6 +67,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "Pipeline9850B417"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineBuildSynthCdkBuildProjectRole231EEA2A"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineBuildSynthCdkBuildProjectRoleDefaultPolicyFB6C941C"
           }
         ],
         "/Hira4SprintStack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Resource": [

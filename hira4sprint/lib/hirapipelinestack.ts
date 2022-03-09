@@ -4,7 +4,8 @@ import { Construct } from 'constructs';
 import { ManagedPolicy, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import * as cdk from 'aws-cdk-lib';
 import { GitHubTrigger } from 'aws-cdk-lib/aws-codepipeline-actions';
-import {Hirastagestack} from './hirastagestack'
+// import {Hirastagestack} from './hirastagestack'
+const {Hirastagestack}=require('./hirastagestack')
 const app = new cdk.App();
 
 export class Hirapipelinestack extends Stack {
@@ -27,24 +28,9 @@ export class Hirapipelinestack extends Stack {
 
 
 
-      // creating pipelines
-      // const pipeline = new pipelines.CodePipeline(this, 'Pipeline', {
-      //           synth: new pipelines.CodeBuildStep('Synth', {
-      //                   input: pipelines.CodePipelineSource.gitHub('hiraaziz2022skipq/sprint3Voyager', 'branch', {
-      //                     // This is optional
-      //                     authentication: cdk.SecretValue.secretsManager('webtken'),
-      //                     trigger:GitHubTrigger.POLL,}),
-
-      //                   // pipelines.CodePipelineSource.connection('hiraaziz2022skipq/Voyager', 'main',{
-      //                   //     connectionArn: 'arn:aws:secretsmanager:us-west-1:315997497220:secret:webtken-RRczq1'}),
-      //                   commands: ["cd hira4sprint/","npm ci","npx cdk synth"],
-      //                   primaryOutputDirectory: "hira3sprint/cdk.out",
-      //                   role:this.create_role()
-      //           }),
-      // });
       
-      // var beta=new Hirastagestack(this,"beta")
-      // pipeline.addStage(beta)
+      const stagebeta = new Hirastagestack(this,"betastage")
+      pipeline.addStage(stagebeta)
 
       // var prod=new Hirastagestack(this,"prod")
       // pipeline.addStage.arguments(prod)
