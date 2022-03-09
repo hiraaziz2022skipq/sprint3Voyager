@@ -1,8 +1,8 @@
 const axios = require('axios');
 const https = require('https');
 const constant = require("./constant.json");
+import {publish_metric} from './cloudwatch';
 
-// import {publish_metric} from './cloudwatch';
 exports.webhandler = async function(event:any,context:any) {
     let values:any;
     
@@ -13,8 +13,8 @@ exports.webhandler = async function(event:any,context:any) {
            var latency = await get_latency(urls);
            
            //publishing metric
-        //    let cw_avail=publish_metric(constant.url_namespace,constant.Metricname_avail,urls,avail)
-        //    let cw_latency=publish_metric(constant.url_namespace,constant.Metricname_latency,urls,latency)
+           let cw_avail=publish_metric(constant.url_namespace,constant.Metricname_avail,urls,avail)
+           let cw_latency=publish_metric(constant.url_namespace,constant.Metricname_latency,urls,latency)
                 values={
                 "url":urls,
                 "availability":avail,

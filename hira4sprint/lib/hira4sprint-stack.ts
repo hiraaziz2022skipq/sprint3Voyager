@@ -41,16 +41,28 @@ export class Hira4SprintStack extends Stack {
 
 // Functions
 
+
+// Bucket deployment func will upload all files of resource folder to s3 bucket
 Upload_file(bucket: Bucket) {
   const deployment = new BucketDeployment(this, 'DeployWebsite', {
     sources: [Source.asset('./resources')],
     destinationBucket: bucket})
-
-   
   }
 
 
+
 lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
+
+  /* create_lambda()
+        
+  id -> string value
+  asset -> Folder that contains code
+  runtime -> Language
+  handler -> Lambda function
+  timeout -> After how long lambda will end
+  
+  Return : Lambda Function */
+
   const hello = new lambda.Function(this, id, {
     runtime: lambda.Runtime.NODEJS_14_X,    // execution environment
     code: lambda.Code.fromAsset(asset),  // code loaded from "resource" directory
@@ -63,7 +75,9 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
 }
 
 
+
 create_role():any{
+
 const role = new Role(this, 'example-iam-role', {
   assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
   description: 'An example IAM role in AWS CDK',

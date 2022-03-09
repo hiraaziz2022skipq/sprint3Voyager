@@ -2803,7 +2803,7 @@
                             },
                             "source": {
                               "type": "CODEPIPELINE",
-                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"d2641c623040ab3831e5f0aab7fa909f63d73fc14693b6b5fd2288907f282ba5:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
+                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"847ba873b67f7bc378b83f446b79f279e9c2c6fd476cdc0dd3587c0c84222b95:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
                             },
                             "cache": {
                               "type": "NO_CACHE"
@@ -3347,7 +3347,7 @@
                               "s3Bucket": {
                                 "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                               },
-                              "s3Key": "d2641c623040ab3831e5f0aab7fa909f63d73fc14693b6b5fd2288907f282ba5.zip"
+                              "s3Key": "847ba873b67f7bc378b83f446b79f279e9c2c6fd476cdc0dd3587c0c84222b95.zip"
                             },
                             "role": {
                               "Fn::GetAtt": [
@@ -4007,7 +4007,7 @@
                               "s3Bucket": {
                                 "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                               },
-                              "s3Key": "d2641c623040ab3831e5f0aab7fa909f63d73fc14693b6b5fd2288907f282ba5.zip"
+                              "s3Key": "847ba873b67f7bc378b83f446b79f279e9c2c6fd476cdc0dd3587c0c84222b95.zip"
                             },
                             "role": {
                               "Fn::GetAtt": [
