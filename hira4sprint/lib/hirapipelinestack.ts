@@ -5,6 +5,7 @@ import { ManagedPolicy, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import * as cdk from 'aws-cdk-lib';
 import { GitHubTrigger } from 'aws-cdk-lib/aws-codepipeline-actions';
 import {Hirastagestack} from './hirastagestack'
+import { ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
 // const {Hirastagestack}=require('./hirastagestack')
 const app = new cdk.App();
 
@@ -25,15 +26,17 @@ export class Hirapipelinestack extends Stack {
         })
         });
 
-
+        const unit_test= new ShellStep("Unit_Test",{
+          commands:["cd hira4sprint","npm ci","npm run test"]
+        })
 
 
       
       const stagebeta = new Hirastagestack(this,"betastage")
-      pipeline.addStage(stagebeta)
+      pipeline.addStage(stagebeta,{pre:[unit_test]})
 
       const prod=new Hirastagestack(this,"prod")
-      pipeline.addStage(prod)
+      pipeline.addStage(prod,{pre:[new ManualApprovalStep("Waiting for your approval")]})
     }
   
 
