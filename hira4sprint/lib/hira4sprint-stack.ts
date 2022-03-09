@@ -33,7 +33,7 @@ export class Hira4SprintStack extends Stack {
 
     /*-----------Calling web health lambda function-----------*/
     var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket)
-    var function_name=lambda_func.FunctionName
+    var function_name=lambda_func.functionName
 
     // Run Lambda periodically
     const rule = new events.Rule(this, 'Rule', {
@@ -82,7 +82,7 @@ export class Hira4SprintStack extends Stack {
 
 
     // Creating Failures Alarm
-    // const lambda_func1=lambda_func.currentVersion
+    const lambda_func1=lambda_func.currentVersion
     
     /*
     failure_metric()
@@ -90,7 +90,7 @@ export class Hira4SprintStack extends Stack {
     
     returns metric
     */
-    // const failure_metric=this.failure_metrics(function_name);
+    const failure_metric=this.failure_metrics(function_name);
 
   }
 
@@ -184,7 +184,6 @@ create_alarm_avail(dimension:any,urls:string) {
             Return : Generated alarms if datapoints exceeds threshold
             
   */
-
   const alarm=new Alarm(this, 'availability_alarm'+urls, {
     metric: metric,
 

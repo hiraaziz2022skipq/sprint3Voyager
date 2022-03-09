@@ -2506,7 +2506,7 @@
           ]
         },
         "Source": {
-          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"37f2bf36123653c0d28cbf7201f1ec94002f105d90fe4ad235057f25bf81a411:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"cda3dc8689240ea4f034de198cf4ce543d32b062c7b266963ef65e5a4e43d713:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
           "Type": "CODEPIPELINE"
         },
         "Cache": {
