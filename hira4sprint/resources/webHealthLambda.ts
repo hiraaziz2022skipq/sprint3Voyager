@@ -2,13 +2,13 @@ const axios = require('axios');
 const https = require('https');
 const constant = require("./constant.json");
 import {publish_metric} from './cloudwatch';
-const { S3Bucket } = require('./s3') 
+const {downloads3 } = require('./downloads3') 
 
 exports.webhandler = async function(event:any,context:any) {
     let values:any;
 
         // Download file from s3 bucket
-        const s3Bucket = new S3Bucket()
+        const s3Bucket = new downloads3()
         let constants = await s3Bucket.downloadfrom_s3t(env.bucket_name, "constant.json")
 
         // Iterate each URL

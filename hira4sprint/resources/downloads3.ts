@@ -1,8 +1,7 @@
 const { S3 } = require('aws-sdk');
 
-export class S3Bucket {
+export class downloads3 {
     s3bucket: any
-
     constructor() {
         this.s3bucket = new S3();
     }
