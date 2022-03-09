@@ -22,25 +22,28 @@ export class Hira4SprintStack extends Stack {
     //Roles
     var roles=this.create_role();
 
-    // Creating S3 bucket
+    /*----------Creating S3 bucket-----------*/
     const bucket = new Bucket(this,id=constant.bucket_id,{accessControl: BucketAccessControl.PUBLIC_READ,});
     var s3_bucket=bucket.bucketName
     bucket.policy?.applyRemovalPolicy(RemovalPolicy.DESTROY);
 
-    // Uploading file to S3 bucket
+    //Uploading file to S3 bucket
     this.Upload_file(bucket);
 
-    //Calling web health lambda function
+
+    /*-----------Calling web health lambda function-----------*/
     var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket)
     var function_name=lambda_func.FunctionName
 
     // Run Lambda periodically
     const rule = new events.Rule(this, 'Rule', {
-            schedule: events.Schedule.rate(Duration.minutes(1)),
-            targets: [new targets.LambdaFunction(lambda_func)],
+                  schedule: events.Schedule.rate(Duration.minutes(1)),
+                  targets: [new targets.LambdaFunction(lambda_func)],
     });
 
-    //Creating an SNS TOPIC
+
+    /*---------------------Creating an SNS TOPIC----------------*/
+
     const topic = new sns.Topic(this, 'MyTopic');
     topic.addSubscription(new EmailSubscription(constant.email));
    
@@ -64,7 +67,8 @@ export class Hira4SprintStack extends Stack {
     }
 
 
-    //Creating Table 
+    /*------------Creating Table-------------*/
+
     const my_table=this.create_table();
     var table_name=my_table.tableName
     
@@ -78,7 +82,7 @@ export class Hira4SprintStack extends Stack {
 
 
     // Creating Failures Alarm
-    const lambda_func1=lambda_func.currentVersion
+    // const lambda_func1=lambda_func.currentVersion
     
     /*
     failure_metric()
@@ -86,11 +90,13 @@ export class Hira4SprintStack extends Stack {
     
     returns metric
     */
-    const failure_metric=this.failure_metrics(function_name);
+    // const failure_metric=this.failure_metrics(function_name);
 
   }
 
-// Functions
+
+
+/*------- Functions------*/
 
 
 // Bucket deployment func will upload all files of resource folder to s3 bucket
@@ -101,7 +107,7 @@ Upload_file(bucket: Bucket) {
   }
 
 
-
+// Calling Lambda Function
 lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
 
   /* create_lambda()
@@ -126,7 +132,7 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
 }
 
 
-
+// create Roles
 create_role():any{
 
 const role = new Role(this, 'example-iam-role', {
@@ -142,6 +148,8 @@ const role = new Role(this, 'example-iam-role', {
 return role
 }
 
+
+// Generate availability alarm
 create_alarm_avail(dimension:any,urls:string) {
 
   /*
@@ -190,6 +198,8 @@ create_alarm_avail(dimension:any,urls:string) {
   return alarm
 }
 
+
+// Generate latency alarm
 create_alarm_latency(dimension:any,urls:string) {
 
   const metric = new Metric({
@@ -210,7 +220,10 @@ create_alarm_latency(dimension:any,urls:string) {
   });
   return alarm
 }
-  create_table() {
+
+
+// Create table dynamodb function
+create_table() {
 
     /*
     Table()
@@ -227,6 +240,8 @@ create_alarm_latency(dimension:any,urls:string) {
     return globalTable
 }
 
+
+// Generate Failure alarms
 failure_metrics(function_name:any):any{
 
       /*
