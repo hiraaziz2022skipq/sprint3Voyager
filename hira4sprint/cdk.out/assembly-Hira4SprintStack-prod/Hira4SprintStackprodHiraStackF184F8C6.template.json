@@ -995,10 +995,134 @@
         "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/failure_alarm/Resource"
       }
     },
+    "LambdaAlias9C15A666": {
+      "Type": "AWS::Lambda::Alias",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "WebHealthLambdaB270CBD9"
+        },
+        "FunctionVersion": {
+          "Fn::GetAtt": [
+            "WebHealthLambdaCurrentVersion2CE84F09a72a1a58432e43abe30dc0cce551fd5f",
+            "Version"
+          ]
+        },
+        "Name": "Current_Version"
+      },
+      "UpdatePolicy": {
+        "CodeDeployLambdaAliasUpdate": {
+          "ApplicationName": {
+            "Ref": "DeploymentGroupApplication7B89ABEB"
+          },
+          "DeploymentGroupName": {
+            "Ref": "DeploymentGroup6D277AF0"
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/LambdaAlias/Resource"
+      }
+    },
+    "DeploymentGroupApplication7B89ABEB": {
+      "Type": "AWS::CodeDeploy::Application",
+      "Properties": {
+        "ComputePlatform": "Lambda"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/Application/Resource"
+      }
+    },
+    "DeploymentGroupServiceRoleA00955F3": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "codedeploy.",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ".",
+                      {
+                        "Ref": "AWS::URLSuffix"
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSCodeDeployRoleForLambdaLimited"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/ServiceRole/Resource"
+      }
+    },
+    "DeploymentGroup6D277AF0": {
+      "Type": "AWS::CodeDeploy::DeploymentGroup",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "DeploymentGroupApplication7B89ABEB"
+        },
+        "ServiceRoleArn": {
+          "Fn::GetAtt": [
+            "DeploymentGroupServiceRoleA00955F3",
+            "Arn"
+          ]
+        },
+        "AlarmConfiguration": {
+          "Alarms": [
+            {
+              "Name": {
+                "Ref": "failurealarmB1641DDB"
+              }
+            }
+          ],
+          "Enabled": true
+        },
+        "AutoRollbackConfiguration": {
+          "Enabled": true,
+          "Events": [
+            "DEPLOYMENT_FAILURE",
+            "DEPLOYMENT_STOP_ON_ALARM"
+          ]
+        },
+        "DeploymentConfigName": "CodeDeployDefault.LambdaLinear10PercentEvery1Minute",
+        "DeploymentStyle": {
+          "DeploymentOption": "WITH_TRAFFIC_CONTROL",
+          "DeploymentType": "BLUE_GREEN"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSTW/CMAz9LbuHbOzrDp122iQEaNcqTbzOkA8UJ6Aq6n9f0tKOnd7zsxX72Xnkyxf+cCcutJDquNDY8LQLQh5ZluqEwvC0dRpY9W0H3DiNsivhlX0KK1pQf/o/oWf0xNM6yiOEkryyEdaCoBTUScFJu86ADXxMvc0CE0QQiK8K9EwL0yjBU37rQ3Tgv8ATOst2aFsNwdn3aGUoykxy6cyn8qzd0A14g1SinsE5N6XsOl5dZ8xD2izt3Qll0Uayiw1Jj6epyW3cM6ldVBcR5A9PKy28KSUD6ZnqrDBO5V3vRTO2GUg/+at18VbnG0iNfHWhSuNglw1ryBdqs19WRQrObIFc9HKcduK3YuWswnnKct2eWaeAH+j+vHzly+f8BQ6EuPDRBjTAtyP+Ap7yP/QeAgAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/12Sy27CMBBFv6V745a+9iFVu6ESAtRtNLFdavAj8gMUWfn3jmMCtKu5cz3OjE/mkc5f6MMdnPyM8cNMyZamTQB2IGg1SYKmaW2VIPW3GePKKsn6nJ7VJxjYCX71/xgD8U80LSI7iJAPz6qEBXiRC5rERadsr4UJtBy9XQwC3ovgaZXDQBTolgNN+K0l9MJ9CeelNWQjzU6JYM17NCxk5yKw9KKncvRu5Eo4Lf2YVUqCz94oBiKOOINHCPEMASPObNDa2k6y7BWxia1nTnZTz9t8IEzZyE8Q2A9NlQKnSw8UA+G9AW05ot9CW9qMAm9ZLgobmpbjy69gPpyNHSlu1XVIG6bW/9J/d4aJYqMywQb/NFOSVidfKzlCJSNs3IMdUiV19MHqtfA2OlYgTPrWrK3h8vL4vEMDMTg/3fv74/yVzp9x0fZeypmLJkgt6LrEX77j096EAgAA"
       },
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/CDKMetadata/Default"

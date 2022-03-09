@@ -32,7 +32,7 @@ export class Hira4SprintStack extends Stack {
 
 
     /*-----------Calling web health lambda function-----------*/
-    var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket)
+    var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket,"bucket_name")
     var function_name=lambda_func.functionName
 
     // Run Lambda periodically
@@ -73,7 +73,7 @@ export class Hira4SprintStack extends Stack {
     var table_name=my_table.tableName
     
     //Caling DYNAMO DB lambda function
-    var dynamo_lambda=this.lambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name)
+    var dynamo_lambda=this.lambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name,"table_name")
     my_table.grantReadWriteData(dynamo_lambda)
     
     // invoke lambda after every alarm
@@ -110,7 +110,7 @@ Upload_file(bucket: Bucket) {
 
 
 // Calling Lambda Function
-lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
+lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string,env_name:string):any{
 
   /* create_lambda()
         
@@ -128,7 +128,7 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
     handler: handler,
     timeout: Duration.seconds(180)  ,
     role:roles,
-    environment:{'table_name':envior_var}             // file is "webhandler", function is "handler"
+    environment:{env_name:envior_var}             // file is "webhandler", function is "handler"
   });
   return hello
 }

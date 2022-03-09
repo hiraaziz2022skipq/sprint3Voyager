@@ -6166,6 +6166,188 @@
                       "version": "2.15.0"
                     }
                   },
+                  "LambdaAlias": {
+                    "id": "LambdaAlias",
+                    "path": "Hira4SprintStack/betastage/HiraStack/LambdaAlias",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/betastage/HiraStack/LambdaAlias/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Alias",
+                          "aws:cdk:cloudformation:props": {
+                            "functionName": {
+                              "Ref": "WebHealthLambdaB270CBD9"
+                            },
+                            "functionVersion": {
+                              "Fn::GetAtt": [
+                                "WebHealthLambdaCurrentVersion2CE84F09a72a1a58432e43abe30dc0cce551fd5f",
+                                "Version"
+                              ]
+                            },
+                            "name": "Current_Version"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnAlias",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "ScalingRole": {
+                        "id": "ScalingRole",
+                        "path": "Hira4SprintStack/betastage/HiraStack/LambdaAlias/ScalingRole",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.Resource",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.Alias",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "DeploymentGroup": {
+                    "id": "DeploymentGroup",
+                    "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup",
+                    "children": {
+                      "Application": {
+                        "id": "Application",
+                        "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup/Application",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup/Application/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::CodeDeploy::Application",
+                              "aws:cdk:cloudformation:props": {
+                                "computePlatform": "Lambda"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_codedeploy.CfnApplication",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_codedeploy.LambdaApplication",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "ServiceRole": {
+                        "id": "ServiceRole",
+                        "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup/ServiceRole",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup/ServiceRole/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                              "aws:cdk:cloudformation:props": {
+                                "assumeRolePolicyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": "sts:AssumeRole",
+                                      "Effect": "Allow",
+                                      "Principal": {
+                                        "Service": {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              "codedeploy.",
+                                              {
+                                                "Ref": "AWS::Region"
+                                              },
+                                              ".",
+                                              {
+                                                "Ref": "AWS::URLSuffix"
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "managedPolicyArns": [
+                                  {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":iam::aws:policy/service-role/AWSCodeDeployRoleForLambdaLimited"
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Role",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/betastage/HiraStack/DeploymentGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CodeDeploy::DeploymentGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "applicationName": {
+                              "Ref": "DeploymentGroupApplication7B89ABEB"
+                            },
+                            "serviceRoleArn": {
+                              "Fn::GetAtt": [
+                                "DeploymentGroupServiceRoleA00955F3",
+                                "Arn"
+                              ]
+                            },
+                            "alarmConfiguration": {
+                              "alarms": [
+                                {
+                                  "name": {
+                                    "Ref": "failurealarmB1641DDB"
+                                  }
+                                }
+                              ],
+                              "enabled": true
+                            },
+                            "autoRollbackConfiguration": {
+                              "enabled": true,
+                              "events": [
+                                "DEPLOYMENT_FAILURE",
+                                "DEPLOYMENT_STOP_ON_ALARM"
+                              ]
+                            },
+                            "deploymentConfigName": "CodeDeployDefault.LambdaLinear10PercentEvery1Minute",
+                            "deploymentStyle": {
+                              "deploymentType": "BLUE_GREEN",
+                              "deploymentOption": "WITH_TRAFFIC_CONTROL"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_codedeploy.CfnDeploymentGroup",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_codedeploy.LambdaDeploymentGroup",
+                      "version": "2.15.0"
+                    }
+                  },
                   "CDKMetadata": {
                     "id": "CDKMetadata",
                     "path": "Hira4SprintStack/betastage/HiraStack/CDKMetadata",
@@ -8780,6 +8962,188 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "LambdaAlias": {
+                    "id": "LambdaAlias",
+                    "path": "Hira4SprintStack/prod/HiraStack/LambdaAlias",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/prod/HiraStack/LambdaAlias/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Alias",
+                          "aws:cdk:cloudformation:props": {
+                            "functionName": {
+                              "Ref": "WebHealthLambdaB270CBD9"
+                            },
+                            "functionVersion": {
+                              "Fn::GetAtt": [
+                                "WebHealthLambdaCurrentVersion2CE84F09a72a1a58432e43abe30dc0cce551fd5f",
+                                "Version"
+                              ]
+                            },
+                            "name": "Current_Version"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnAlias",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "ScalingRole": {
+                        "id": "ScalingRole",
+                        "path": "Hira4SprintStack/prod/HiraStack/LambdaAlias/ScalingRole",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.Resource",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.Alias",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "DeploymentGroup": {
+                    "id": "DeploymentGroup",
+                    "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup",
+                    "children": {
+                      "Application": {
+                        "id": "Application",
+                        "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/Application",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/Application/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::CodeDeploy::Application",
+                              "aws:cdk:cloudformation:props": {
+                                "computePlatform": "Lambda"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_codedeploy.CfnApplication",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_codedeploy.LambdaApplication",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "ServiceRole": {
+                        "id": "ServiceRole",
+                        "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/ServiceRole",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/ServiceRole/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                              "aws:cdk:cloudformation:props": {
+                                "assumeRolePolicyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": "sts:AssumeRole",
+                                      "Effect": "Allow",
+                                      "Principal": {
+                                        "Service": {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              "codedeploy.",
+                                              {
+                                                "Ref": "AWS::Region"
+                                              },
+                                              ".",
+                                              {
+                                                "Ref": "AWS::URLSuffix"
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "managedPolicyArns": [
+                                  {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":iam::aws:policy/service-role/AWSCodeDeployRoleForLambdaLimited"
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Role",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/prod/HiraStack/DeploymentGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CodeDeploy::DeploymentGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "applicationName": {
+                              "Ref": "DeploymentGroupApplication7B89ABEB"
+                            },
+                            "serviceRoleArn": {
+                              "Fn::GetAtt": [
+                                "DeploymentGroupServiceRoleA00955F3",
+                                "Arn"
+                              ]
+                            },
+                            "alarmConfiguration": {
+                              "alarms": [
+                                {
+                                  "name": {
+                                    "Ref": "failurealarmB1641DDB"
+                                  }
+                                }
+                              ],
+                              "enabled": true
+                            },
+                            "autoRollbackConfiguration": {
+                              "enabled": true,
+                              "events": [
+                                "DEPLOYMENT_FAILURE",
+                                "DEPLOYMENT_STOP_ON_ALARM"
+                              ]
+                            },
+                            "deploymentConfigName": "CodeDeployDefault.LambdaLinear10PercentEvery1Minute",
+                            "deploymentStyle": {
+                              "deploymentType": "BLUE_GREEN",
+                              "deploymentOption": "WITH_TRAFFIC_CONTROL"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_codedeploy.CfnDeploymentGroup",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_codedeploy.LambdaDeploymentGroup",
                       "version": "2.15.0"
                     }
                   },

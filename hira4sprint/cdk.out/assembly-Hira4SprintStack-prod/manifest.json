@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/136c94a69afdf4e823791c7f15a65ecfaa9882de06543110a5926e01b34d4fe2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/753b6fe49eef1d22502badcce7f94fe5500014e523a5e927e6160531b5743618.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -356,6 +356,30 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "failurealarmB1641DDB"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/LambdaAlias/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaAlias9C15A666"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DeploymentGroup/Application/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeploymentGroupApplication7B89ABEB"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DeploymentGroup/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeploymentGroupServiceRoleA00955F3"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DeploymentGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeploymentGroup6D277AF0"
           }
         ],
         "/Hira4SprintStack/prod/HiraStack/CDKMetadata/Default": [
