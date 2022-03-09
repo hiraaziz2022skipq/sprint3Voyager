@@ -1,20 +1,7 @@
 {
   "version": "16.0.0",
   "files": {
-    "144799be1f2cea23333e1aeb1507bc099caf4accf645bff9c40317a9bcaeb46f": {
-      "source": {
-        "path": "asset.144799be1f2cea23333e1aeb1507bc099caf4accf645bff9c40317a9bcaeb46f",
-        "packaging": "zip"
-      },
-      "destinations": {
-        "current_account-current_region": {
-          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "144799be1f2cea23333e1aeb1507bc099caf4accf645bff9c40317a9bcaeb46f.zip",
-          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
-        }
-      }
-    },
-    "03db78eb49ede3173ca057ae356b38a68bac65d92240c0b211d898bac9ac6735": {
+    "b036af4428bfe3a3e5301263e3a9ddfb0bba0d570183ea5fc048522a5f1d691b": {
       "source": {
         "path": "Hira4SprintStack.template.json",
         "packaging": "file"
@@ -22,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "03db78eb49ede3173ca057ae356b38a68bac65d92240c0b211d898bac9ac6735.json",
+          "objectKey": "b036af4428bfe3a3e5301263e3a9ddfb0bba0d570183ea5fc048522a5f1d691b.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
