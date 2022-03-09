@@ -8,6 +8,8 @@ import * as cdk from 'aws-cdk-lib';
 export class Hirastagestack extends Stage {
     constructor(scope: Construct, id: string, props?: StackProps) {
       super(scope, id, props);
+
+        // Instantiate Stack      
          const hira4stack = new Hira4SprintStack(this,"HiraStack")
     }
 }

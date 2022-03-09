@@ -13,47 +13,46 @@ export class Hirapipelinestack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
       super(scope, id, props);
 
-      const pipeline = new pipelines.CodePipeline(this, 'Pipeline', {
-        synth: new pipelines.ShellStep('Synth', {
-      //^ Using Secrets Manager to provide the access token to authenticate to GitHub
-          input: pipelines.CodePipelineSource.gitHub('hiraaziz2022skipq/sprint3Voyager', "main",{
-            authentication:cdk.SecretValue.secretsManager('webtken'),
-            trigger:GitHubTrigger.POLL,}),
-           commands: [
-            "cd hira4sprint","npm ci","npx cdk synth"
-          ],
-        primaryOutputDirectory : "hira4sprint/cdk.out"
-        })
-        });
+      
+      // Using Secrets Manager to provide the access token to authenticate to GitHub
+      const input = pipelines.CodePipelineSource.gitHub('hiraaziz2022skipq/sprint3Voyager', "main",{
+                                            authentication:cdk.SecretValue.secretsManager('webtken'),
+                                            trigger:GitHubTrigger.POLL,})
 
+        /** 
+        ShellStep()
+                                            
+        id -> 'synth'
+        input -> source
+        commands -> commands to run in pipeline
+        primary_output_directory -> : Directory that will contain primary output fileset when script run
+        
+        **/
+
+      const synth = new pipelines.ShellStep('Synth', {
+                      input: input,
+                      commands: ["cd hira4sprint","npm ci","npx cdk synth"],
+                      primaryOutputDirectory : "hira4sprint/cdk.out"})
+
+      // Connecting to the github
+      const pipeline = new pipelines.CodePipeline(this, 'Pipeline', {synth: synth});
+
+        // Adding Test and commands
         const unit_test= new ShellStep("Unit_Test",{
           commands:["cd hira4sprint","npm ci","npm run test"]
         })
 
 
-      
+      // Instantiate Beta stage
       const stagebeta = new Hirastagestack(this,"betastage")
+      // Adding beta stage to the pipeline and  unit test as pre stage
       pipeline.addStage(stagebeta,{pre:[unit_test]})
 
+      // Creating Production stage
       const prod=new Hirastagestack(this,"prod")
+      // Adding product to pipeline and manual approval as pre stage
       pipeline.addStage(prod,{pre:[new ManualApprovalStep("Waiting for your approval")]})
     }
   
 
-
-    // create_role():any{
-    //     const role = new Role(this, 'example-iam-role', {
-    //       assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
-    //       description: 'An example IAM role in AWS CDK',
-    //       managedPolicies: [
-    //         ManagedPolicy.fromAwsManagedPolicyName('CloudWatchFullAccess'),
-    //         ManagedPolicy.fromAwsManagedPolicyName('AmazonDynamoDBFullAccess'),
-    //         ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
-    //         ManagedPolicy.fromAwsManagedPolicyName("AWSCodePipeline_FullAccess"),
-    //         ManagedPolicy.fromAwsManagedPolicyName("AmazonS3FullAccess"),
-    //         ManagedPolicy.fromAwsManagedPolicyName("AwsCloudFormationFullAccess"),
-    //       ],
-    //     });
-    //     return role
-    //   }
-    }
+  }

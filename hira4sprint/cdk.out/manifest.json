@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1a8599ef093948647281f1f2bde7b91673ae07414a9a0b1d8b6b882c592bccdc.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/860bec9534b6958f02c15744f027848b1713b1c3fcda6b83adc61104d079b27b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -135,6 +135,42 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "PipelineAssetsFileAsset1CodePipelineActionRoleDefaultPolicy5F0BE7E8"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestRoleB2F05F83"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestRoleDefaultPolicy060E57F7"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestDFFA6824"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestCodePipelineActionRole2CA01F38"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestCodePipelineActionRoleDefaultPolicy40EA286A"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/prod/Waiting_for_your_approval/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineprodWaitingforyourapprovalCodePipelineActionRole3C09F8D7"
           }
         ],
         "/Hira4SprintStack/Pipeline/UpdatePipeline/SelfMutation/Role/Resource": [
