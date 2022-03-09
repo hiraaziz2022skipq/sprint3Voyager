@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/21c27d729519378702b24a3b5343f5b7dde8f4b5fc73d252539e44894f3b6339.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/82865b8153b4042679448febb1211c0ca82e6db1c1762b47bd5cb2adbf98fb85.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -34,16 +34,64 @@
         "Hira4SprintStackprodHiraStackF184F8C6.assets"
       ],
       "metadata": {
-        "/Hira4SprintStack/prod/HiraStack/HelloHandler/ServiceRole/Resource": [
+        "/Hira4SprintStack/prod/HiraStack/example-iam-role/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "HelloHandlerServiceRole11EF7C63"
+            "data": "exampleiamroleABFDED29"
           }
         ],
-        "/Hira4SprintStack/prod/HiraStack/HelloHandler/Resource": [
+        "/Hira4SprintStack/prod/HiraStack/s3_buckethira/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "HelloHandler2E4FBA4D"
+            "data": "s3buckethiraE0442F2E"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DeployWebsite/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteAwsCliLayer17DBC421"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DeployWebsite/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployWebsiteCustomResourceD116527B"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/WebHealthLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebHealthLambdaB270CBD9"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Rule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Rule4C995B7F"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Rule/AllowEventRuleHira4SprintStackprodHiraStackWebHealthLambda36A952CB": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RuleAllowEventRuleHira4SprintStackprodHiraStackWebHealthLambda36A952CB6F775D6D"
           }
         ],
         "/Hira4SprintStack/prod/HiraStack/CDKMetadata/Default": [

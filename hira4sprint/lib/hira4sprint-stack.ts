@@ -20,13 +20,18 @@ export class Hira4SprintStack extends Stack {
     //Roles
     var roles=this.create_role();
 
+    // Creating S3 bucket
     const bucket = new Bucket(this,id=constant.bucket_id,{accessControl: BucketAccessControl.PUBLIC_READ,});
     var s3_bucket=bucket.bucketName
     bucket.policy?.applyRemovalPolicy(RemovalPolicy.DESTROY);
+
+    // Uploading file to S3 bucket
     this.Upload_file(bucket);
 
     //Calling web health lambda function
     var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket)
+
+    // Run Lambda periodically
     const rule = new events.Rule(this, 'Rule', {
             schedule: events.Schedule.rate(Duration.minutes(1)),
             targets: [new targets.LambdaFunction(lambda_func)],
