@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const cdk = require("aws-cdk-lib");
+const hira4sprint_stack_1 = require("../lib/hira4sprint-stack");
+const app = new cdk.App();
+new hira4sprint_stack_1.Hira4SprintStack(app, 'Hira4SprintStack');
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaGlyYTRzcHJpbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJoaXJhNHNwcmludC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFDQSxtQ0FBbUM7QUFDbkMsZ0VBQTREO0FBRTVELE1BQU0sR0FBRyxHQUFHLElBQUksR0FBRyxDQUFDLEdBQUcsRUFBRSxDQUFDO0FBQzFCLElBQUksb0NBQWdCLENBQUMsR0FBRyxFQUFFLGtCQUFrQixDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIjIS91c3IvYmluL2VudiBub2RlXG5pbXBvcnQgKiBhcyBjZGsgZnJvbSAnYXdzLWNkay1saWInO1xuaW1wb3J0IHsgSGlyYTRTcHJpbnRTdGFjayB9IGZyb20gJy4uL2xpYi9oaXJhNHNwcmludC1zdGFjayc7XG5cbmNvbnN0IGFwcCA9IG5ldyBjZGsuQXBwKCk7XG5uZXcgSGlyYTRTcHJpbnRTdGFjayhhcHAsICdIaXJhNFNwcmludFN0YWNrJyk7XG4iXX0=
