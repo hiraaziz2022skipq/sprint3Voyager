@@ -987,8 +987,9 @@
         ],
         "MetricName": "Duration",
         "Namespace": "AWS/Lambda",
-        "Period": 60,
-        "Statistic": "Average"
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 12000
       },
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/betastage/HiraStack/failure_alarm/Resource"

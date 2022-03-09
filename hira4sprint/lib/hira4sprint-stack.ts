@@ -13,7 +13,7 @@ import * as sns from 'aws-cdk-lib/aws-sns';
 import {EmailSubscription, LambdaSubscription} from 'aws-cdk-lib/aws-sns-subscriptions'
 import * as cw_actions from 'aws-cdk-lib/aws-cloudwatch-actions';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
-import { TargetGroupLoadBalancingAlgorithmType } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import {LambdaDeploymentConfig, LambdaDeploymentGroup} from 'aws-cdk-lib/aws-codedeploy'
 
 export class Hira4SprintStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -92,6 +92,8 @@ export class Hira4SprintStack extends Stack {
     */
     const failure_metric=this.failure_metrics(function_name);
 
+    // Auto Roll back
+    this.roll_back(failure_metric,lambda_func1) 
   }
 
 
@@ -269,6 +271,41 @@ failure_metrics(function_name:any){
                 datapointsToAlarm:1
         });
         return alarm
+}
+
+roll_back(failure_metric:any,lambda_func1:any){
+
+  /*
+        Id (str) : Id
+        Alias_name(str) : Name of alias
+        Version: Current version of lambda function
+            
+        Return : Currenct version of lambda function
+  */
+
+  const alias = new lambda.Alias(this, 'LambdaAlias', {
+    aliasName: 'Current_Version',
+    version :lambda_func1,
+  });
+  
+
+  /*
+            LambdaDeploymentGroup()
+        
+            Id(str) : Id
+            alias(Func) : Alias
+            deployment_config: How many traffic should be send to new lambda function in specific time.
+            Alarms(func): triggered alarm
+           
+  */
+        
+        // Deploy previous version of lambda if alarms gets triggered
+  new LambdaDeploymentGroup(this, 'DeploymentGroup', {
+    alias,
+    deploymentConfig: LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
+    alarms:[failure_metric]
+  });
+
 }
 
 }
