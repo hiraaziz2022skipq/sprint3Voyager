@@ -20,7 +20,7 @@ export class Hirapipelinestack extends Stack {
            commands: [
             "cd hira4sprint","npm ci","npx cdk synth"
           ],
-        primaryOutputDirectory : "hira3sprint/cdk.out"
+        primaryOutputDirectory : "hira4sprint/cdk.out"
         })
         });
 
