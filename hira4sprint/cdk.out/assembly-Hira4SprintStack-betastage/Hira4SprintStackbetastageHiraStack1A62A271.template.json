@@ -406,6 +406,17 @@
         "aws:asset:property": "Code"
       }
     },
+    "WebHealthLambdaCurrentVersion2CE84F09a72a1a58432e43abe30dc0cce551fd5f": {
+      "Type": "AWS::Lambda::Version",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "WebHealthLambdaB270CBD9"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/betastage/HiraStack/WebHealthLambda/CurrentVersion/Resource"
+      }
+    },
     "Rule4C995B7F": {
       "Type": "AWS::Events::Rule",
       "Properties": {
@@ -960,10 +971,33 @@
         "aws:cdk:path": "Hira4SprintStack/betastage/HiraStack/DynamoLambda/MyTopic/Resource"
       }
     },
+    "failurealarmB1641DDB": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Dimensions": [
+          {
+            "Name": "FunctionName",
+            "Value": {
+              "Ref": "WebHealthLambdaB270CBD9"
+            }
+          }
+        ],
+        "MetricName": "Duration",
+        "Namespace": "AWS/Lambda",
+        "Period": 60,
+        "Statistic": "Average"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/betastage/HiraStack/failure_alarm/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VRy24CMQz8lt5DWvq6w1Y9tRIC1Osqm7hbQx4oTkCrKP/eZBcoPc1k7Nge+5HPX/jDnTjRTKr9TGPH0yYIuWdFahMKw9PaaWDNtx1x5TTKoT7P7FNY0YP60/8JmdETT8so9xBq8MwmWAqCmtAmBQftBgM28Cn0dhWYIIJAfFEhMy1MpwRPpdaHGMB/gSd0lm3Q9hqCs+/RylCVKympt3wF3iDVT5nBsXSgYjGeLRYsE9kibd0BZdUmsokdSY+HS5Xbd2ZSu6hOIsgfnhZaeFNTRpKZGqwwTpXFbkU3tRlJvphpdTXSloVLjXxxokbj6I2Nnss5+mKONZGCM2sgF72cpr3wW7FxVuF1ynrKzKxTwHd0f5y/8vlzufeOEGc+2oAG+HrCX8sTfuYLAgAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSTW/CMAz9LbuHbOzrDp122iQEaNcqTbzOkA8UJ6Aq6n9f0tKOnd7zsxX72Xnkyxf+cCcutJDquNDY8LQLQh5ZluqEwvC0dRpY9W0H3DiNsivhlX0KK1pQf/o/oWf0xNM6yiOEkryyEdaCoBTUScFJu86ADXxMvc0CE0QQiK8K9EwL0yjBU37rQ3Tgv8ATOst2aFsNwdn3aGUoykxy6cyn8qzd0A14g1SinsE5N6XsOl5dZ8xD2izt3Qll0Uayiw1Jj6epyW3cM6ldVBcR5A9PKy28KSUD6ZnqrDBO5V3vRTO2GUg/+at18VbnG0iNfHWhSuNglw1ryBdqs19WRQrObIFc9HKcduK3YuWswnnKct2eWaeAH+j+vHzly+f8BQ6EuPDRBjTAtyP+Ap7yP/QeAgAA"
       },
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/betastage/HiraStack/CDKMetadata/Default"

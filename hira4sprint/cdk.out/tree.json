@@ -4223,6 +4223,32 @@
                           "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
                           "version": "2.15.0"
                         }
+                      },
+                      "CurrentVersion": {
+                        "id": "CurrentVersion",
+                        "path": "Hira4SprintStack/betastage/HiraStack/WebHealthLambda/CurrentVersion",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/betastage/HiraStack/WebHealthLambda/CurrentVersion/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Version",
+                              "aws:cdk:cloudformation:props": {
+                                "functionName": {
+                                  "Ref": "WebHealthLambdaB270CBD9"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnVersion",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.Version",
+                          "version": "2.15.0"
+                        }
                       }
                     },
                     "constructInfo": {
@@ -6101,6 +6127,44 @@
                       "version": "2.15.0"
                     }
                   },
+                  "failure_alarm": {
+                    "id": "failure_alarm",
+                    "path": "Hira4SprintStack/betastage/HiraStack/failure_alarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/betastage/HiraStack/failure_alarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                            "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "WebHealthLambdaB270CBD9"
+                                }
+                              }
+                            ],
+                            "metricName": "Duration",
+                            "namespace": "AWS/Lambda",
+                            "period": 60,
+                            "statistic": "Average"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.15.0"
+                    }
+                  },
                   "CDKMetadata": {
                     "id": "CDKMetadata",
                     "path": "Hira4SprintStack/betastage/HiraStack/CDKMetadata",
@@ -6773,6 +6837,32 @@
                         },
                         "constructInfo": {
                           "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "CurrentVersion": {
+                        "id": "CurrentVersion",
+                        "path": "Hira4SprintStack/prod/HiraStack/WebHealthLambda/CurrentVersion",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Hira4SprintStack/prod/HiraStack/WebHealthLambda/CurrentVersion/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Version",
+                              "aws:cdk:cloudformation:props": {
+                                "functionName": {
+                                  "Ref": "WebHealthLambdaB270CBD9"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnVersion",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.Version",
                           "version": "2.15.0"
                         }
                       }
@@ -8650,6 +8740,44 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_lambda.Function",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "failure_alarm": {
+                    "id": "failure_alarm",
+                    "path": "Hira4SprintStack/prod/HiraStack/failure_alarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Hira4SprintStack/prod/HiraStack/failure_alarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                            "evaluationPeriods": 1,
+                            "datapointsToAlarm": 1,
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "WebHealthLambdaB270CBD9"
+                                }
+                              }
+                            ],
+                            "metricName": "Duration",
+                            "namespace": "AWS/Lambda",
+                            "period": 60,
+                            "statistic": "Average"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
                       "version": "2.15.0"
                     }
                   },

@@ -241,7 +241,7 @@ create_table() {
 
 
 // Generate Failure alarms
-failure_metrics(function_name:any):any{
+failure_metrics(function_name:any){
 
       /*
             cloudwatch.Metric()
@@ -257,13 +257,12 @@ failure_metrics(function_name:any):any{
         const metric = new Metric({
                 namespace: constant.fail_metric_namespace,
                 metricName: constant.fail_metricname,
-                period:Duration.minutes(1),
                 dimensionsMap: {"FunctionName":function_name}
         });
 
         const alarm = new Alarm(this, 'failure_alarm', {
                 metric: metric,
-                threshold: constant.fail_metric_treshold,
+                threshold: constant.fail_metric_threshold,
                 comparisonOperator:
                 cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
                 evaluationPeriods: 1,

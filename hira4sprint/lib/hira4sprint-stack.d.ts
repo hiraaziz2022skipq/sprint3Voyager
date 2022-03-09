@@ -11,5 +11,5 @@ export declare class Hira4SprintStack extends Stack {
     create_alarm_avail(dimension: any, urls: string): cloudwatch.Alarm;
     create_alarm_latency(dimension: any, urls: string): cloudwatch.Alarm;
     create_table(): dynamodb.Table;
-    failure_metrics(function_name: any): any;
+    failure_metrics(function_name: any): cloudwatch.Alarm;
 }
