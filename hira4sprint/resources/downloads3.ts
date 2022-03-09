@@ -7,11 +7,11 @@ export class S3Bucket {
         this.s3bucket = new S3();
     }
 
-    async downloadfrom_s3(bucketName: any, file: string) {
+    async downloadfrom_s3(bucket_Name: any, file: string) {
         let response: any
 
         let params = {
-            Bucket: bucketName,
+            Bucket: bucket_Name,
             Key: file
         };
 
