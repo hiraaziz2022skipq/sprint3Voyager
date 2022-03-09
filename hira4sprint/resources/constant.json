@@ -9,5 +9,9 @@
     "email":"hiraaziz1998@gmail.com",
     "table_id":"hira_Table",
 
-    "partition_key":"hira_URL"
+    "partition_key":"hira_URL",
+
+    "fail_metric_namespace":"AWS/Lambda",
+    "fail_metricname":"Duration",
+    "fail_metric_threshold":12000
 }

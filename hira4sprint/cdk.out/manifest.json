@@ -37,7 +37,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0b556341c5943f7b006ba5b346f3fd1ea900fc09c93b091041e55b588977952.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/861bcc7239a01ccdd027ff9d6c7d913375f56ffa5227f38ee8538376701f625f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -161,6 +161,54 @@
             "data": "PipelineAssetsFileAsset3CodePipelineActionRoleDefaultPolicy5C399808"
           }
         ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset4/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset4CodePipelineActionRole492E1DB6"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset4/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset4CodePipelineActionRoleDefaultPolicy7F51ED2C"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset5/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset5CodePipelineActionRole7F5BE01A"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset5/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset5CodePipelineActionRoleDefaultPolicy5FB4CDE8"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset6/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset6CodePipelineActionRoleB00CC4C9"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset6/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset6CodePipelineActionRoleDefaultPolicyD33137F9"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset7/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset7CodePipelineActionRole0E00FBA5"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset7/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset7CodePipelineActionRoleDefaultPolicy1B7E08D1"
+          }
+        ],
         "/Hira4SprintStack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Role/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -243,6 +291,30 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "PipelineAssetsFileAsset3FE71B523"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Assets/FileAsset4/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset474303B7D"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Assets/FileAsset5/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset5184A5C2F"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Assets/FileAsset6/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset669C72F3C"
+          }
+        ],
+        "/Hira4SprintStack/Pipeline/Assets/FileAsset7/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset7A51C54D0"
           }
         ],
         "/Hira4SprintStack/CDKMetadata/Default": [

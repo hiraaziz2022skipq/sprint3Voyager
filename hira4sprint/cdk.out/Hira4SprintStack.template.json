@@ -247,6 +247,46 @@
               "Effect": "Allow",
               "Resource": {
                 "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset4CodePipelineActionRole492E1DB6",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset5CodePipelineActionRole7F5BE01A",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset6CodePipelineActionRoleB00CC4C9",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset7CodePipelineActionRole0E00FBA5",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
                   "PipelinebetastageUnitTestCodePipelineActionRole2CA01F38",
                   "Arn"
                 ]
@@ -484,6 +524,110 @@
                 "RoleArn": {
                   "Fn::GetAtt": [
                     "PipelineAssetsFileAsset3CodePipelineActionRole99229BA9",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 1
+              },
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "PipelineAssetsFileAsset474303B7D"
+                  }
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "Synth_Output"
+                  }
+                ],
+                "Name": "FileAsset4",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineAssetsFileAsset4CodePipelineActionRole492E1DB6",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 1
+              },
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "PipelineAssetsFileAsset5184A5C2F"
+                  }
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "Synth_Output"
+                  }
+                ],
+                "Name": "FileAsset5",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineAssetsFileAsset5CodePipelineActionRole7F5BE01A",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 1
+              },
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "PipelineAssetsFileAsset669C72F3C"
+                  }
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "Synth_Output"
+                  }
+                ],
+                "Name": "FileAsset6",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineAssetsFileAsset6CodePipelineActionRoleB00CC4C9",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 1
+              },
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "PipelineAssetsFileAsset7A51C54D0"
+                  }
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "Synth_Output"
+                  }
+                ],
+                "Name": "FileAsset7",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineAssetsFileAsset7CodePipelineActionRole0E00FBA5",
                     "Arn"
                   ]
                 },
@@ -1313,6 +1457,278 @@
         "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset3/CodePipelineActionRole/DefaultPolicy/Resource"
       }
     },
+    "PipelineAssetsFileAsset4CodePipelineActionRole492E1DB6": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset4/CodePipelineActionRole/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset4CodePipelineActionRoleDefaultPolicy7F51ED2C": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset474303B7D",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "PipelineAssetsFileAsset4CodePipelineActionRoleDefaultPolicy7F51ED2C",
+        "Roles": [
+          {
+            "Ref": "PipelineAssetsFileAsset4CodePipelineActionRole492E1DB6"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset4/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset5CodePipelineActionRole7F5BE01A": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset5/CodePipelineActionRole/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset5CodePipelineActionRoleDefaultPolicy5FB4CDE8": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset5184A5C2F",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "PipelineAssetsFileAsset5CodePipelineActionRoleDefaultPolicy5FB4CDE8",
+        "Roles": [
+          {
+            "Ref": "PipelineAssetsFileAsset5CodePipelineActionRole7F5BE01A"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset5/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset6CodePipelineActionRoleB00CC4C9": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset6/CodePipelineActionRole/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset6CodePipelineActionRoleDefaultPolicyD33137F9": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset669C72F3C",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "PipelineAssetsFileAsset6CodePipelineActionRoleDefaultPolicyD33137F9",
+        "Roles": [
+          {
+            "Ref": "PipelineAssetsFileAsset6CodePipelineActionRoleB00CC4C9"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset6/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset7CodePipelineActionRole0E00FBA5": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset7/CodePipelineActionRole/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset7CodePipelineActionRoleDefaultPolicy1B7E08D1": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineAssetsFileAsset7A51C54D0",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "PipelineAssetsFileAsset7CodePipelineActionRoleDefaultPolicy1B7E08D1",
+        "Roles": [
+          {
+            "Ref": "PipelineAssetsFileAsset7CodePipelineActionRole0E00FBA5"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Pipeline/Assets/FileAsset7/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
     "PipelinebetastageUnitTestRoleB2F05F83": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -2090,7 +2506,7 @@
           ]
         },
         "Source": {
-          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"847ba873b67f7bc378b83f446b79f279e9c2c6fd476cdc0dd3587c0c84222b95:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"37f2bf36123653c0d28cbf7201f1ec94002f105d90fe4ad235057f25bf81a411:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
           "Type": "CODEPIPELINE"
         },
         "Cache": {
@@ -2101,6 +2517,138 @@
       },
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/Pipeline/Assets/FileAsset3/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset474303B7D": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE"
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER"
+        },
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "PipelineAssetsFileRole59943A77",
+            "Arn"
+          ]
+        },
+        "Source": {
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"9b723c70c344d5429e59658358cd24e87a5a126aae1439b98c1c965911bcf501:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "Type": "CODEPIPELINE"
+        },
+        "Cache": {
+          "Type": "NO_CACHE"
+        },
+        "Description": "Pipeline step Hira4SprintStack/Pipeline/Assets/FileAsset4",
+        "EncryptionKey": "alias/aws/s3"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Assets/FileAsset4/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset5184A5C2F": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE"
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER"
+        },
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "PipelineAssetsFileRole59943A77",
+            "Arn"
+          ]
+        },
+        "Source": {
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"8673bd36bbfce694fb944a5bd855eac5d342df85f1f9a67cb19fa5fbf3d5bde3:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "Type": "CODEPIPELINE"
+        },
+        "Cache": {
+          "Type": "NO_CACHE"
+        },
+        "Description": "Pipeline step Hira4SprintStack/Pipeline/Assets/FileAsset5",
+        "EncryptionKey": "alias/aws/s3"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Assets/FileAsset5/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset669C72F3C": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE"
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER"
+        },
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "PipelineAssetsFileRole59943A77",
+            "Arn"
+          ]
+        },
+        "Source": {
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-betastage/Hira4SprintStackbetastageHiraStack1A62A271.assets.json\\\" --verbose publish \\\"1673c22217dfb769f0f0db9ea2695ba42036d920b91aa4d32f6517495e80982e:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "Type": "CODEPIPELINE"
+        },
+        "Cache": {
+          "Type": "NO_CACHE"
+        },
+        "Description": "Pipeline step Hira4SprintStack/Pipeline/Assets/FileAsset6",
+        "EncryptionKey": "alias/aws/s3"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Assets/FileAsset6/Resource"
+      }
+    },
+    "PipelineAssetsFileAsset7A51C54D0": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE"
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER"
+        },
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "PipelineAssetsFileRole59943A77",
+            "Arn"
+          ]
+        },
+        "Source": {
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-Hira4SprintStack-prod/Hira4SprintStackprodHiraStackF184F8C6.assets.json\\\" --verbose publish \\\"a00a6d5a2102661e53d419fc6796bd169d5454ee8d0c65b3606fa3e825271c31:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+          "Type": "CODEPIPELINE"
+        },
+        "Cache": {
+          "Type": "NO_CACHE"
+        },
+        "Description": "Pipeline step Hira4SprintStack/Pipeline/Assets/FileAsset7",
+        "EncryptionKey": "alias/aws/s3"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Hira4SprintStack/Pipeline/Assets/FileAsset7/Resource"
       }
     },
     "CDKMetadata": {

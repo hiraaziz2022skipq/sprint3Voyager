@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6330c80591991994d090cc69d4af1b59a7d2ee7f0139161060c0ef8025f834b1.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fb04c1a746a672a44fa996f3cbd70400f0202621cd09af41a0f6da4d5b3f0806.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -38,6 +38,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "exampleiamroleABFDED29"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/example-iam-role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "exampleiamroleDefaultPolicyB15F295B"
           }
         ],
         "/Hira4SprintStack/prod/HiraStack/s3_buckethira/Resource": [
@@ -92,6 +98,252 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RuleAllowEventRuleHira4SprintStackprodHiraStackWebHealthLambda36A952CB6F775D6D"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/MyTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyTopic86869434"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/MyTopic/hiraaziz1998@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyTopichiraaziz1998gmailcom2E3C6968"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/availability_alarmhttp:----www.google.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "availabilityalarmhttpwwwgooglecom97E3871F"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Latency_alarmhttp:----www.google.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Latencyalarmhttpwwwgooglecom9CC5EA58"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/availability_alarmhttp:----www.youtube.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "availabilityalarmhttpwwwyoutubecomB9E04592"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Latency_alarmhttp:----www.youtube.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Latencyalarmhttpwwwyoutubecom1431C397"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/availability_alarmhttp:----www.facebook.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "availabilityalarmhttpwwwfacebookcom7A8C3A25"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Latency_alarmhttp:----www.facebook.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LatencyalarmhttpwwwfacebookcomDBC5BB63"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/availability_alarmhttp:----www.skipq.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "availabilityalarmhttpwwwskipqcom1A73432D"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/Latency_alarmhttp:----www.skipq.com--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Latencyalarmhttpwwwskipqcom75752214"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/hira_Table/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraTable28D8DFD1"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/hira_Table/SourceTableAttachedManagedPolicy-Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderOnEventHandlerServiceRole8D42D089/Resource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraTableSourceTableAttachedManagedPolicyHira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderOnEventHandlerServiceRole8D42D089A1F8637D"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/hira_Table/SourceTableAttachedManagedPolicy-Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderIsCompleteHandlerServiceRoleA50F854C/Resource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraTableSourceTableAttachedManagedPolicyHira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderIsCompleteHandlerServiceRoleA50F854CB0EB7837"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/hira_Table/Replicaus-east-1/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraTableReplicauseast1DB3611C5"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/hira_Table/StackRegionNotEqualsus-east-1": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "hiraTableStackRegionNotEqualsuseast124225D9A"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/OnEventHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandlerServiceRole15A26729"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/OnEventHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandlerServiceRoleDefaultPolicyC57085D4"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/OnEventHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandler42BEBAE0"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/IsCompleteHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IsCompleteHandlerServiceRole5810CC58"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/IsCompleteHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IsCompleteHandler7073F4DA"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRole9FF04296"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRoleDefaultPolicy48CD2133"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEvent83C1D0A7"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-isComplete/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisCompleteServiceRoleB1087139"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-isComplete/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisCompleteServiceRoleDefaultPolicy2E7140AC"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-isComplete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisComplete26D7B0CB"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onTimeout/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeoutServiceRole28643D26"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onTimeout/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeoutServiceRoleDefaultPolicy2688969F"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/framework-onTimeout/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeout0B47CA38"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/waiter-state-machine/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderwaiterstatemachineRole0C7159F9"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/waiter-state-machine/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderwaiterstatemachineRoleDefaultPolicyD3C3DA1A"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Provider/waiter-state-machine/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerwaiterstatemachine5D4A9DF0"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderOnEventHandlerServiceRole291839C8Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderOnEventHandlerServiceRole291839C8Ref"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderIsCompleteHandlerServiceRole5192695BRef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderIsCompleteHandlerServiceRole5192695BRef"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider/Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderframeworkonEvent9DB4BE1BArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Hira4SprintStackprodHiraStackawscdkawsdynamodbReplicaProviderframeworkonEvent9DB4BE1BArn"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/@aws-cdk--aws-dynamodb.ReplicaProvider.NestedStack/@aws-cdk--aws-dynamodb.ReplicaProvider.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "awscdkawsdynamodbReplicaProviderNestedStackawscdkawsdynamodbReplicaProviderNestedStackResource18E3F12D"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DynamoLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoLambda6C02E165"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DynamoLambda/AllowInvoke:Hira4SprintStackprodHiraStackMyTopicD1F8B62F": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoLambdaAllowInvokeHira4SprintStackprodHiraStackMyTopicD1F8B62FA40DCB6F"
+          }
+        ],
+        "/Hira4SprintStack/prod/HiraStack/DynamoLambda/MyTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoLambdaMyTopic2B752C5B"
           }
         ],
         "/Hira4SprintStack/prod/HiraStack/CDKMetadata/Default": [
