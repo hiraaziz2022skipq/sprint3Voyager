@@ -1,5 +1,5 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { StackProps, Stage } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-export declare class Hirastagestack extends Stack {
+export declare class Hirastagestack extends Stage {
     constructor(scope: Construct, id: string, props?: StackProps);
 }

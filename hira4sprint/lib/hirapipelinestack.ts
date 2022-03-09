@@ -4,8 +4,8 @@ import { Construct } from 'constructs';
 import { ManagedPolicy, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import * as cdk from 'aws-cdk-lib';
 import { GitHubTrigger } from 'aws-cdk-lib/aws-codepipeline-actions';
-// import {Hirastagestack} from './hirastagestack'
-const {Hirastagestack}=require('./hirastagestack')
+import {Hirastagestack} from './hirastagestack'
+// const {Hirastagestack}=require('./hirastagestack')
 const app = new cdk.App();
 
 export class Hirapipelinestack extends Stack {
@@ -32,8 +32,8 @@ export class Hirapipelinestack extends Stack {
       const stagebeta = new Hirastagestack(this,"betastage")
       pipeline.addStage(stagebeta)
 
-      // var prod=new Hirastagestack(this,"prod")
-      // pipeline.addStage.arguments(prod)
+      const prod=new Hirastagestack(this,"prod")
+      pipeline.addStage(prod)
     }
   
 
