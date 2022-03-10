@@ -1,5 +1,5 @@
 export declare class downloads3 {
-    s3bucket: any;
+    s3: any;
     constructor();
-    downloadfrom_s3(bucket_Name: any, file: string): Promise<any>;
+    downloadfrom_s3(bucket_name: any, file: string): Promise<any>;
 }

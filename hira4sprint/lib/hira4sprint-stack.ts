@@ -34,6 +34,7 @@ export class Hira4SprintStack extends Stack {
     /*-----------Calling web health lambda function-----------*/
     var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket,"bucket_name")
     var function_name=lambda_func.functionName
+    lambda_func.addEnviornment('bucket_name',s3_bucket)
 
     // Run Lambda periodically
     const rule = new events.Rule(this, 'Rule', {
@@ -74,6 +75,7 @@ export class Hira4SprintStack extends Stack {
     
     //Caling DYNAMO DB lambda function
     var dynamo_lambda=this.lambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name,"table_name")
+    dynamo_lambda.addEnviornment('table_name',table_name)
     my_table.grantReadWriteData(dynamo_lambda)
     
     // invoke lambda after every alarm
@@ -128,7 +130,7 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string,env_na
     handler: handler,
     timeout: Duration.seconds(180)  ,
     role:roles,
-    environment:{env_name:envior_var}             // file is "webhandler", function is "handler"
+    // environment:{"bucket_value":envior_var}             // file is "webhandler", function is "handler"
   });
   return hello
 }
@@ -299,6 +301,7 @@ roll_back(failure_metric:any,lambda_func1:any){
            
   */
         
+            
         // Deploy previous version of lambda if alarms gets triggered
   new LambdaDeploymentGroup(this, 'DeploymentGroup', {
     alias,

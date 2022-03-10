@@ -1,16 +1,17 @@
 const { S3 } = require('aws-sdk');
 
 export class downloads3 {
-    s3bucket: any
+    s3: any
+
     constructor() {
-        this.s3bucket = new S3();
+        this.s3 = new S3();
     }
 
-    async downloadfrom_s3(bucket_Name: any, file: string) {
+    async downloadfrom_s3(bucket_name: any, file: string) {
         let response: any
 
         let params = {
-            Bucket: bucket_Name,
+            Bucket: bucket_name,
             Key: file
         };
 
@@ -20,7 +21,7 @@ export class downloads3 {
             
         }
 
-        await this.s3bucket.getObject(params, func).promise();
+        await this.s3.getObject(params, func).promise();
         return response
     }
 }

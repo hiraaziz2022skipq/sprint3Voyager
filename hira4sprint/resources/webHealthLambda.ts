@@ -3,13 +3,13 @@ const https = require('https');
 const constant = require("./constant.json");
 import {publish_metric} from './cloudwatch';
 const {downloads3 } = require('./downloads3') 
-
+const { env } = require('process');
 exports.webhandler = async function(event:any,context:any) {
     let values:any;
 
         // Download file from s3 bucket
-        const s3Bucket = new downloads3()
-        let constants = await s3Bucket.downloadfrom_s3t(env.bucket_name, "constant.json")
+        const downloadS3 = new downloads3()
+        let constants = await downloadS3.downloadfrom_s3(env.bucket_name, "constant.json")
 
         // Iterate each URL
         for(var urls of constant.url) {
