@@ -190,7 +190,7 @@
           }
         ],
         "SourceObjectKeys": [
-          "897de049c55deb8131d7940347048325c8d0b79bee8aa98197dff3e4281253dc.zip"
+          "0090023ae595fe2ac1343a8765f3ab05cb801e811cab7f943c8e5050fe6e99d9.zip"
         ],
         "DestinationBucketName": {
           "Ref": "s3buckethiraE0442F2E"
@@ -376,7 +376,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "897de049c55deb8131d7940347048325c8d0b79bee8aa98197dff3e4281253dc.zip"
+          "S3Key": "0090023ae595fe2ac1343a8765f3ab05cb801e811cab7f943c8e5050fe6e99d9.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -386,7 +386,7 @@
         },
         "Environment": {
           "Variables": {
-            "env_name": {
+            "bucket_name": {
               "Ref": "s3buckethiraE0442F2E"
             }
           }
@@ -401,12 +401,12 @@
       ],
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/WebHealthLambda/Resource",
-        "aws:asset:path": "..\\asset.897de049c55deb8131d7940347048325c8d0b79bee8aa98197dff3e4281253dc",
+        "aws:asset:path": "..\\asset.0090023ae595fe2ac1343a8765f3ab05cb801e811cab7f943c8e5050fe6e99d9",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
     },
-    "WebHealthLambdaCurrentVersion2CE84F09b93b15e3cae6ad2da768de55cf243929": {
+    "WebHealthLambdaCurrentVersion2CE84F096a94477506e64d605008ed0376b897b0": {
       "Type": "AWS::Lambda::Version",
       "Properties": {
         "FunctionName": {
@@ -904,7 +904,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "897de049c55deb8131d7940347048325c8d0b79bee8aa98197dff3e4281253dc.zip"
+          "S3Key": "0090023ae595fe2ac1343a8765f3ab05cb801e811cab7f943c8e5050fe6e99d9.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -914,7 +914,7 @@
         },
         "Environment": {
           "Variables": {
-            "env_name": {
+            "table_name": {
               "Ref": "hiraTable28D8DFD1"
             }
           }
@@ -929,7 +929,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "Hira4SprintStack/prod/HiraStack/DynamoLambda/Resource",
-        "aws:asset:path": "..\\asset.897de049c55deb8131d7940347048325c8d0b79bee8aa98197dff3e4281253dc",
+        "aws:asset:path": "..\\asset.0090023ae595fe2ac1343a8765f3ab05cb801e811cab7f943c8e5050fe6e99d9",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1003,7 +1003,7 @@
         },
         "FunctionVersion": {
           "Fn::GetAtt": [
-            "WebHealthLambdaCurrentVersion2CE84F09b93b15e3cae6ad2da768de55cf243929",
+            "WebHealthLambdaCurrentVersion2CE84F096a94477506e64d605008ed0376b897b0",
             "Version"
           ]
         },
