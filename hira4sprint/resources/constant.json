@@ -1,6 +1,6 @@
 {
     "url":[
-        "http://www.google.com/" ,"http://www.youtube.com/","http://www.facebook.com/","http://www.skipq.com/"
+        "http://www.google.com/" ,"http://www.youtube.com/","http://www.facebook.com/","http://www.skipq.com/"."http://www.github.com/"
     ],
     "url_namespace" : "Hira_Aziz_Sprint4",
     "Metricname_avail" : "Availabilty",
@@ -13,5 +13,5 @@
 
     "fail_metric_namespace":"AWS/Lambda",
     "fail_metricname":"Duration",
-    "fail_metric_threshold":12000
+    "fail_metric_threshold":8000
 }
