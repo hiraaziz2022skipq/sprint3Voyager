@@ -6,7 +6,8 @@ import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 export declare class Hira4SprintStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps);
     Upload_file(bucket: Bucket): void;
-    lambdas(roles: any, id: string, asset: string, handler: string, envior_var: string, env_name: string): any;
+    weblambdas(roles: any, id: string, asset: string, handler: string, envior_var: string): any;
+    dynamolambdas(roles: any, id: string, asset: string, handler: string, envior_var: string): any;
     create_role(): any;
     create_alarm_avail(dimension: any, urls: string): cloudwatch.Alarm;
     create_alarm_latency(dimension: any, urls: string): cloudwatch.Alarm;

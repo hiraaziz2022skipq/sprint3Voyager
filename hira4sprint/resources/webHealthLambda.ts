@@ -9,7 +9,7 @@ exports.webhandler = async function(event:any,context:any) {
 
         // Download file from s3 bucket
         const downloadS3 = new downloads3()
-        let constants = await downloadS3.downloadfrom_s3(env.env_name, "constant.json")
+        let constants = await downloadS3.downloadfrom_s3(env.bucket_name, "constant.json")
 
         // Iterate each URL
         for(var urls of constant.url) {

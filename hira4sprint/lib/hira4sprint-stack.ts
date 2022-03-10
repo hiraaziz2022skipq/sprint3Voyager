@@ -32,7 +32,7 @@ export class Hira4SprintStack extends Stack {
 
 
     /*-----------Calling web health lambda function-----------*/
-    var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket,'bucket_name')
+    var lambda_func=this.weblambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket)
     var function_name=lambda_func.functionName
     
 
@@ -74,7 +74,7 @@ export class Hira4SprintStack extends Stack {
     var table_name=my_table.tableName
     
     //Caling DYNAMO DB lambda function
-    var dynamo_lambda=this.lambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name,"table_name")
+    var dynamo_lambda=this.dynamolambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name)
 
     my_table.grantReadWriteData(dynamo_lambda)
     
@@ -112,7 +112,7 @@ Upload_file(bucket: Bucket) {
 
 
 // Calling Lambda Function
-lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string,env_name:string):any{
+weblambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
 
   /* create_lambda()
         
@@ -130,7 +130,30 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string,env_na
     handler: handler,
     timeout: Duration.seconds(180)  ,
     role:roles,
-    environment:{env_name:envior_var}             // file is "webhandler", function is "handler"
+    environment:{'bucket_name':envior_var}             // file is "webhandler", function is "handler"
+  });
+  return hello
+}
+
+dynamolambdas(roles:any,id:string,asset:string,handler:string,envior_var:string):any{
+
+  /* create_lambda()
+        
+  id -> string value
+  asset -> Folder that contains code
+  runtime -> Language
+  handler -> Lambda function
+  timeout -> After how long lambda will end
+  
+  Return : Lambda Function */
+
+  const hello = new lambda.Function(this, id, {
+    runtime: lambda.Runtime.NODEJS_14_X,    // execution environment
+    code: lambda.Code.fromAsset(asset),  // code loaded from "resource" directory
+    handler: handler,
+    timeout: Duration.seconds(180)  ,
+    role:roles,
+    environment:{'table_name':envior_var}             // file is "webhandler", function is "handler"
   });
   return hello
 }

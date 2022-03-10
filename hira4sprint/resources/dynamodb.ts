@@ -24,7 +24,7 @@ exports.dynamohandler = async function(event:any,context:any) {
     const unique = constant.partition_key
 
     var params = {
-        TableName: env.env_name,
+        TableName: env.table_name,
         Item: {
            unique : {S: ids},
           'MetricName': {S : metric_name},
