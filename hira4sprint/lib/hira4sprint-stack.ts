@@ -75,7 +75,7 @@ export class Hira4SprintStack extends Stack {
     
     //Caling DYNAMO DB lambda function
     var dynamo_lambda=this.lambdas(roles,"DynamoLambda","./resources","dynamodb.dynamohandler",table_name,"table_name")
-    dynamo_lambda.addEnviornment('table_name',table_name)
+
     my_table.grantReadWriteData(dynamo_lambda)
     
     // invoke lambda after every alarm
