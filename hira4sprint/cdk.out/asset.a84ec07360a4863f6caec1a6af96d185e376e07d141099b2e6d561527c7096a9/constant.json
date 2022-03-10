@@ -1,0 +1,17 @@
+{
+    "url":[
+        "http://www.google.com/" ,"http://www.youtube.com/","http://www.facebook.com/","http://www.skipq.com/"
+    ],
+    "url_namespace" : "Hira_Aziz_Sprint4",
+    "Metricname_avail" : "Availabilty",
+    "Metricname_latency": "Latency",
+    "bucket_id":"s3_buckethira",
+    "email":"hiraaziz1998@gmail.com",
+    "table_id":"hira_Table",
+
+    "partition_key":"hira_URL",
+
+    "fail_metric_namespace":"AWS/Lambda",
+    "fail_metricname":"Duration",
+    "fail_metric_threshold":12000
+}

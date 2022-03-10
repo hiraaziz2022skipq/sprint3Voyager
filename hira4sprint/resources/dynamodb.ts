@@ -26,7 +26,7 @@ exports.dynamohandler = async function(event:any,context:any) {
     var params = {
         TableName: env.table_name,
         Item: {
-           unique : {S: ids},
+           'hira_URL' : {S: ids},
           'MetricName': {S : metric_name},
           'NewStateReason' : {S : Threshold},
           'value' : {S : dimension}

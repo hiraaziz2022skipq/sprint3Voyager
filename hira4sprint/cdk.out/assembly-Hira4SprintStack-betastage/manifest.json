@@ -17,7 +17,7 @@
         "validateOnSynth": true,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4ed8df361c3570e20e5b57ff7b96733cdb447c56863e9c259124bbc36aff2515.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/8cc4d552f9a0daab934486ab343f2aead2177b1312f0ffdd4606cd7d70c58b42.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -91,7 +91,7 @@
         "/Hira4SprintStack/betastage/HiraStack/WebHealthLambda/CurrentVersion/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebHealthLambdaCurrentVersion2CE84F096a94477506e64d605008ed0376b897b0"
+            "data": "WebHealthLambdaCurrentVersion2CE84F090c439a88a9be90753b3a3a4795e4f13f"
           }
         ],
         "/Hira4SprintStack/betastage/HiraStack/Rule/Resource": [
