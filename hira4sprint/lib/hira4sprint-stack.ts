@@ -170,6 +170,7 @@ const role = new Role(this, 'example-iam-role', {
     ManagedPolicy.fromAwsManagedPolicyName('AmazonDynamoDBFullAccess'),
     ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
     ManagedPolicy.fromAwsManagedPolicyName('AWSLambdaInvocation-DynamoDB'),
+    ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'),
   ],
 });
 return role
