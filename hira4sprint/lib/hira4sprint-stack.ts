@@ -32,9 +32,9 @@ export class Hira4SprintStack extends Stack {
 
 
     /*-----------Calling web health lambda function-----------*/
-    var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket,"bucket_name")
+    var lambda_func=this.lambdas(roles,"WebHealthLambda","./resources","webHealthLambda.webhandler",s3_bucket,'bucket_name')
     var function_name=lambda_func.functionName
-    lambda_func.addEnviornment('bucket_name',s3_bucket)
+    
 
     // Run Lambda periodically
     const rule = new events.Rule(this, 'Rule', {
@@ -130,7 +130,7 @@ lambdas(roles:any,id:string,asset:string,handler:string,envior_var:string,env_na
     handler: handler,
     timeout: Duration.seconds(180)  ,
     role:roles,
-    // environment:{"bucket_value":envior_var}             // file is "webhandler", function is "handler"
+    environment:{env_name:envior_var}             // file is "webhandler", function is "handler"
   });
   return hello
 }
