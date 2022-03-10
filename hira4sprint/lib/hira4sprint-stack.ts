@@ -327,8 +327,8 @@ roll_back(failure_metric:any,lambda_func1:any){
             
         // Deploy previous version of lambda if alarms gets triggered
   new LambdaDeploymentGroup(this, 'DeploymentGroup', {
-    alias,
-    deploymentConfig: LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
+    alias:alias,
+    deploymentConfig: LambdaDeploymentConfig.CANARY_10PERCENT_5MINUTES,
     alarms:[failure_metric]
   });
 
