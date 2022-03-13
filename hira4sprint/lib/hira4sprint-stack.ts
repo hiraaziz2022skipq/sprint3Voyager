@@ -1,4 +1,5 @@
 import { Duration, RemovalPolicy, Stack, StackProps} from 'aws-cdk-lib';
+import * as cdk from 'aws-cdk-lib'
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import * as events from 'aws-cdk-lib/aws-events';
@@ -14,6 +15,7 @@ import {EmailSubscription, LambdaSubscription} from 'aws-cdk-lib/aws-sns-subscri
 import * as cw_actions from 'aws-cdk-lib/aws-cloudwatch-actions';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import {LambdaDeploymentConfig, LambdaDeploymentGroup} from 'aws-cdk-lib/aws-codedeploy'
+import { CfnDisk } from 'aws-cdk-lib/aws-lightsail';
 
 export class Hira4SprintStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -263,7 +265,7 @@ create_table() {
 
   const globalTable = new dynamodb.Table(this, constant.table_id, {
     partitionKey: { name: constant.partition_key, type: dynamodb.AttributeType.STRING },
-    replicationRegions: ['us-east-1'], });
+    replicationRegions: ['us-east-1'],removalPolicy: cdk.RemovalPolicy.DESTROY });
     return globalTable
 }
 
