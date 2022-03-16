@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("source-map-support/register");
+const cdk = require("aws-cdk-lib");
+const hirapipelinestack_1 = require("../lib/hirapipelinestack");
+const app = new cdk.App();
+new hirapipelinestack_1.Hirapipelinestack(app, 'Hirapiplelinestack', {});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3ByaW50NWhpcmEuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJzcHJpbnQ1aGlyYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFDQSx1Q0FBcUM7QUFDckMsbUNBQW1DO0FBQ25DLGdFQUEwRDtBQUUxRCxNQUFNLEdBQUcsR0FBRyxJQUFJLEdBQUcsQ0FBQyxHQUFHLEVBQUUsQ0FBQztBQUMxQixJQUFJLHFDQUFpQixDQUFDLEdBQUcsRUFBRSxvQkFBb0IsRUFBRSxFQUVoRCxDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIjIS91c3IvYmluL2VudiBub2RlXG5pbXBvcnQgJ3NvdXJjZS1tYXAtc3VwcG9ydC9yZWdpc3Rlcic7XG5pbXBvcnQgKiBhcyBjZGsgZnJvbSAnYXdzLWNkay1saWInO1xuaW1wb3J0IHtIaXJhcGlwZWxpbmVzdGFja30gZnJvbSAnLi4vbGliL2hpcmFwaXBlbGluZXN0YWNrJ1xuXG5jb25zdCBhcHAgPSBuZXcgY2RrLkFwcCgpO1xubmV3IEhpcmFwaXBlbGluZXN0YWNrKGFwcCwgJ0hpcmFwaXBsZWxpbmVzdGFjaycsIHtcbiAgXG59KTsiXX0=
