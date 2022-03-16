@@ -1,0 +1,166 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "Sprint5HiraStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "Sprint5HiraStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "Sprint5HiraStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "Sprint5HiraStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f9e58c3f7a3f75d7e2ef2e08f4827050164f00f07b50015dad6d20ff54f44a00.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "Sprint5HiraStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "Sprint5HiraStack.assets"
+      ],
+      "metadata": {
+        "/Sprint5HiraStack/example-iam-role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "exampleiamroleABFDED29"
+          }
+        ],
+        "/Sprint5HiraStack/MyLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyLayer38944FA5"
+          }
+        ],
+        "/Sprint5HiraStack/api_lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apilambda17748974"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapi162F20B8"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiCloudWatchRoleEB425128"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiAccountC3A4750C"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiDeploymentB7EF8EB7b6182d76333e239119cd4d1943c12ae1"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiDeploymentStageprod329F21FF"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiEndpoint8EB17201"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyB6DF4575"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.Sprint5HiraStackmyapiF85161A3.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYApiPermissionSprint5HiraStackmyapiF85161A3ANYproxyE0EF2C25"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.Test.Sprint5HiraStackmyapiF85161A3.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYApiPermissionTestSprint5HiraStackmyapiF85161A3ANYproxyAD03B049"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYDD7FCE64"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/ANY/ApiPermission.Sprint5HiraStackmyapiF85161A3.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANYApiPermissionSprint5HiraStackmyapiF85161A3ANYB38058B9"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/ANY/ApiPermission.Test.Sprint5HiraStackmyapiF85161A3.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANYApiPermissionTestSprint5HiraStackmyapiF85161A3ANY4EA6B88B"
+          }
+        ],
+        "/Sprint5HiraStack/myapi/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANY111D56B7"
+          }
+        ],
+        "/Sprint5HiraStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/Sprint5HiraStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/Sprint5HiraStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/Sprint5HiraStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "Sprint5HiraStack"
+    }
+  }
+}
