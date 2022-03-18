@@ -1,33 +1,47 @@
 {
   "version": "16.0.0",
   "artifacts": {
+    "assembly-Hirapiplelinestack-betastage": {
+      "type": "cdk:cloud-assembly",
+      "properties": {
+        "directoryName": "assembly-Hirapiplelinestack-betastage",
+        "displayName": "Hirapiplelinestack/betastage"
+      }
+    },
+    "assembly-Hirapiplelinestack-prod": {
+      "type": "cdk:cloud-assembly",
+      "properties": {
+        "directoryName": "assembly-Hirapiplelinestack-prod",
+        "displayName": "Hirapiplelinestack/prod"
+      }
+    },
     "Tree": {
       "type": "cdk:tree",
       "properties": {
         "file": "tree.json"
       }
     },
-    "Sprint5HiraStack.assets": {
+    "Hirapiplelinestack.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "Sprint5HiraStack.assets.json",
+        "file": "Hirapiplelinestack.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "Sprint5HiraStack": {
+    "Hirapiplelinestack": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
-        "templateFile": "Sprint5HiraStack.template.json",
+        "templateFile": "Hirapiplelinestack.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f9e58c3f7a3f75d7e2ef2e08f4827050164f00f07b50015dad6d20ff54f44a00.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/77be4879b101c485d372e05b74cb6709b524da24fe714c7ae473f53394716230.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "Sprint5HiraStack.assets"
+          "Hirapiplelinestack.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
@@ -36,131 +50,209 @@
         }
       },
       "dependencies": [
-        "Sprint5HiraStack.assets"
+        "Hirapiplelinestack.assets"
       ],
       "metadata": {
-        "/Sprint5HiraStack/example-iam-role/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/ArtifactsBucket/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "exampleiamroleABFDED29"
+            "data": "PipelineArtifactsBucketAEA9A052"
           }
         ],
-        "/Sprint5HiraStack/MyLayer/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/ArtifactsBucket/Policy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MyLayer38944FA5"
+            "data": "PipelineArtifactsBucketPolicyF53CCC52"
           }
         ],
-        "/Sprint5HiraStack/api_lambda/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Role/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "apilambda17748974"
+            "data": "PipelineRoleB27FAA37"
           }
         ],
-        "/Sprint5HiraStack/myapi/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Role/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapi162F20B8"
+            "data": "PipelineRoleDefaultPolicy7BDC1ABB"
           }
         ],
-        "/Sprint5HiraStack/myapi/CloudWatchRole/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiCloudWatchRoleEB425128"
+            "data": "Pipeline9850B417"
           }
         ],
-        "/Sprint5HiraStack/myapi/Account": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiAccountC3A4750C"
+            "data": "PipelineBuildSynthCdkBuildProjectRole231EEA2A"
           }
         ],
-        "/Sprint5HiraStack/myapi/Deployment/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiDeploymentB7EF8EB7b6182d76333e239119cd4d1943c12ae1"
+            "data": "PipelineBuildSynthCdkBuildProjectRoleDefaultPolicyFB6C941C"
           }
         ],
-        "/Sprint5HiraStack/myapi/DeploymentStage.prod/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Build/Synth/CdkBuildProject/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiDeploymentStageprod329F21FF"
+            "data": "PipelineBuildSynthCdkBuildProject6BEFA8E6"
           }
         ],
-        "/Sprint5HiraStack/myapi/Endpoint": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Build/Synth/CodePipelineActionRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiEndpoint8EB17201"
+            "data": "PipelineBuildSynthCodePipelineActionRole4E7A6C97"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/{proxy+}/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Build/Synth/CodePipelineActionRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiproxyB6DF4575"
+            "data": "PipelineBuildSynthCodePipelineActionRoleDefaultPolicy92C90290"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.Sprint5HiraStackmyapiF85161A3.ANY..{proxy+}": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/UpdatePipeline/SelfMutate/CodePipelineActionRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiproxyANYApiPermissionSprint5HiraStackmyapiF85161A3ANYproxyE0EF2C25"
+            "data": "PipelineUpdatePipelineSelfMutateCodePipelineActionRoleD6D4E5CF"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.Test.Sprint5HiraStackmyapiF85161A3.ANY..{proxy+}": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/UpdatePipeline/SelfMutate/CodePipelineActionRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiproxyANYApiPermissionTestSprint5HiraStackmyapiF85161A3ANYproxyAD03B049"
+            "data": "PipelineUpdatePipelineSelfMutateCodePipelineActionRoleDefaultPolicyE626265B"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/{proxy+}/ANY/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Assets/FileAsset1/CodePipelineActionRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiproxyANYDD7FCE64"
+            "data": "PipelineAssetsFileAsset1CodePipelineActionRoleC0EC649A"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/ANY/ApiPermission.Sprint5HiraStackmyapiF85161A3.ANY..": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Assets/FileAsset1/CodePipelineActionRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiANYApiPermissionSprint5HiraStackmyapiF85161A3ANYB38058B9"
+            "data": "PipelineAssetsFileAsset1CodePipelineActionRoleDefaultPolicy5F0BE7E8"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/ANY/ApiPermission.Test.Sprint5HiraStackmyapiF85161A3.ANY..": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Assets/FileAsset2/CodePipelineActionRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiANYApiPermissionTestSprint5HiraStackmyapiF85161A3ANY4EA6B88B"
+            "data": "PipelineAssetsFileAsset2CodePipelineActionRole06965A59"
           }
         ],
-        "/Sprint5HiraStack/myapi/Default/ANY/Resource": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/Assets/FileAsset2/CodePipelineActionRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "myapiANY111D56B7"
+            "data": "PipelineAssetsFileAsset2CodePipelineActionRoleDefaultPolicy2399F4BC"
           }
         ],
-        "/Sprint5HiraStack/CDKMetadata/Default": [
+        "/Hirapiplelinestack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestRoleB2F05F83"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestRoleDefaultPolicy060E57F7"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Pipeline/betastage/Unit_Test/Unit_Test/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestDFFA6824"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Pipeline/betastage/Unit_Test/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestCodePipelineActionRole2CA01F38"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Pipeline/betastage/Unit_Test/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebetastageUnitTestCodePipelineActionRoleDefaultPolicy40EA286A"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Pipeline/prod/Waiting_for_your_approval/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineprodWaitingforyourapprovalCodePipelineActionRole3C09F8D7"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/UpdatePipeline/SelfMutation/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdatePipelineSelfMutationRole57E559E8"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/UpdatePipeline/SelfMutation/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdatePipelineSelfMutationRoleDefaultPolicyA225DA4E"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/UpdatePipeline/SelfMutation/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdatePipelineSelfMutationDAA41400"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Assets/FileRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileRole59943A77"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Assets/FileRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileRoleDefaultPolicy14DB8755"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Assets/FileAsset1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset185A67CB4"
+          }
+        ],
+        "/Hirapiplelinestack/Pipeline/Assets/FileAsset2/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineAssetsFileAsset24D2D639B"
+          }
+        ],
+        "/Hirapiplelinestack/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/Sprint5HiraStack/CDKMetadata/Condition": [
+        "/Hirapiplelinestack/CDKMetadata/Condition": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/Sprint5HiraStack/BootstrapVersion": [
+        "/Hirapiplelinestack/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/Sprint5HiraStack/CheckBootstrapVersion": [
+        "/Hirapiplelinestack/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "Sprint5HiraStack"
+      "displayName": "Hirapiplelinestack"
     }
   }
 }

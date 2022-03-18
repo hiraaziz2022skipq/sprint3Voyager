@@ -1,0 +1,161 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "HirapiplelinestackbetastageHiraStackB9E27C03.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "HirapiplelinestackbetastageHiraStackB9E27C03.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "HirapiplelinestackbetastageHiraStackB9E27C03": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "HirapiplelinestackbetastageHiraStackB9E27C03.template.json",
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f079acc065b1e5eb157513fdb4d6ef044ee2f8108d3a00a09fcb4539f334ce94.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "HirapiplelinestackbetastageHiraStackB9E27C03.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "betastage-HiraStack"
+      },
+      "dependencies": [
+        "HirapiplelinestackbetastageHiraStackB9E27C03.assets"
+      ],
+      "metadata": {
+        "/Hirapiplelinestack/betastage/HiraStack/example-iam-role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "exampleiamroleABFDED29"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/MyLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyLayer38944FA5"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/api_lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apilambda17748974"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapi162F20B8"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiCloudWatchRoleEB425128"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiAccountC3A4750C"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiDeploymentB7EF8EB7898001172f1bbf830fb813efcef5d16c"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiDeploymentStageprod329F21FF"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiEndpoint8EB17201"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyB6DF4575"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.HirapiplelinestackbetastageHiraStackmyapi50F25B33.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYApiPermissionHirapiplelinestackbetastageHiraStackmyapi50F25B33ANYproxyF50DA0ED"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/{proxy+}/ANY/ApiPermission.Test.HirapiplelinestackbetastageHiraStackmyapi50F25B33.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYApiPermissionTestHirapiplelinestackbetastageHiraStackmyapi50F25B33ANYproxyDA627075"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiproxyANYDD7FCE64"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/ANY/ApiPermission.HirapiplelinestackbetastageHiraStackmyapi50F25B33.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANYApiPermissionHirapiplelinestackbetastageHiraStackmyapi50F25B33ANYE5EC29C2"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/ANY/ApiPermission.Test.HirapiplelinestackbetastageHiraStackmyapi50F25B33.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANYApiPermissionTestHirapiplelinestackbetastageHiraStackmyapi50F25B33ANYC0899928"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/myapi/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myapiANY111D56B7"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/Hirapiplelinestack/betastage/HiraStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "Hirapiplelinestack/betastage/HiraStack"
+    }
+  }
+}

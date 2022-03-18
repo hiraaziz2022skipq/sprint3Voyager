@@ -10,24 +10,34 @@ export class Sprint5HiraStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const roles=this.create_role()
+    const roles=this.create_role()                                        // Calling create_role function
 
-    const layer = new lambda.LayerVersion(this, 'MyLayer', {
+    /*
+      Layer Version ()
+            id -> id(str)
+            removal policy -> RETAIN
+            code -> Directory of layer code
+            compatibleRuntimes -> NODEJS_!$_X
+    */
+
+    const layer = new lambda.LayerVersion(this, 'MyLayer', {              // Create Layer Version
       removalPolicy: RemovalPolicy.RETAIN,
       code: lambda.Code.fromAsset('./layers'),
       compatibleRuntimes: [lambda.Runtime.NODEJS_14_X],
     });
 
+    // Creating lambda function
     const api_lambda_func = new lambda.Function(this, "api_lambda", {
-      runtime: lambda.Runtime.NODEJS_14_X,    // execution environment
-      code: lambda.Code.fromAsset("./server"),  // code loaded from "resource" directory
-      handler: "api_lambda.handler",
+      runtime: lambda.Runtime.NODEJS_14_X,                                // execution environment
+      code: lambda.Code.fromAsset("./server"),                            // code loaded from "server" directory
+      handler: "api_lambda.handler",                                      // function is "api_lambda.handler"
       timeout: Duration.minutes(5)  ,
       layers:[layer],
       role:roles,
-                 // file is "webhandler", function is "handler"
+                
     });
 
+    // Create an API Gateway to invoke lambda function
     const api = new apigateway.LambdaRestApi(this, 'myapi', {
       handler: api_lambda_func});
     
