@@ -48,7 +48,7 @@ test('AWS Lambda', () => {
   describe('Update', function() {
     it('Update reqiest recieved and responds with json', function(done) {
       request(app)
-        .post('/')
+        .put('/')
         .send({"url":"www.gmail.com",
                 "updateurl":"www.dropbox.com"})
         .set('Accept', 'application/json')
@@ -61,7 +61,7 @@ test('AWS Lambda', () => {
   describe('Delete', function() {
     it('Delete reqiest recieved and responds with json', function(done) {
       request(app)
-        .post('/')
+        .delete('/')
         .send({"url":"www.youtube.com"})
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
